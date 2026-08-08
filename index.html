@@ -1,14 +1,11 @@
 <!doctype html>
+
 <html lang="kk">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <meta
-    name="theme-color"
-    content="#f7f3ed"
-  >
-
+  <meta name="theme-color" content="#f7f3ed">
   <meta
     name="description"
     content="Санжар & Камила — тойға шақыру. 25 қыркүйек 2026, Асылай мейрамханасы, Арыс қаласы."
@@ -16,9 +13,15 @@
 
   <title>Санжар & Камила — Тойға шақыру</title>
 
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Manrope:wght@400;500;600&display=swap');
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Manrope:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
     :root {
       --paper: #f8f4ee;
       --paper2: #eee5d8;
@@ -46,6 +49,10 @@
       font-size: 17px;
     }
 
+    img {
+      max-width: 100%;
+    }
+
     .page {
       width: 100%;
       max-width: 760px;
@@ -56,7 +63,7 @@
     }
 
     /* =========================
-       COMMON
+       GENERAL
     ========================== */
 
     section {
@@ -115,13 +122,8 @@
       animation: heartFloat 3s ease-in-out infinite;
     }
 
-    /* =========================
-       ANIMATIONS
-    ========================== */
-
     @keyframes heartFloat {
-      0%,
-      100% {
+      0%, 100% {
         transform: translateY(0) scale(1);
       }
 
@@ -131,8 +133,7 @@
     }
 
     @keyframes fadePulse {
-      0%,
-      100% {
+      0%, 100% {
         opacity: .45;
       }
 
@@ -153,17 +154,6 @@
       }
     }
 
-    @keyframes botanical {
-      0%,
-      100% {
-        transform: rotate(-18deg) translateY(0);
-      }
-
-      50% {
-        transform: rotate(-12deg) translateY(-5px);
-      }
-    }
-
     .decor-flower {
       position: absolute;
       pointer-events: none;
@@ -172,8 +162,7 @@
       font-family: "Cormorant Garamond", serif;
       font-size: 52px;
       line-height: 1;
-      animation: botanical 7s ease-in-out infinite;
-      z-index: 2;
+      z-index: 5;
     }
 
     .decor-flower.tl {
@@ -208,17 +197,17 @@
       content: "";
       position: absolute;
       pointer-events: none;
-      z-index: 3;
+      z-index: 4;
     }
 
     .hero::before {
       inset: 18px;
-      border: 1px solid rgba(255, 255, 255, .55);
+      border: 1px solid rgba(216, 203, 187, .8);
     }
 
     .hero::after {
       inset: 28px;
-      border: 1px solid rgba(255, 255, 255, .32);
+      border: 1px solid rgba(255, 255, 255, .45);
     }
 
     .hero-bg {
@@ -232,32 +221,30 @@
       height: 100%;
       object-fit: cover;
       object-position: center 42%;
-      display: block;
       filter: saturate(.72) sepia(.08);
     }
 
     .hero-overlay {
       position: absolute;
       inset: 0;
-      z-index: 0;
-
+      z-index: 1;
       background:
         linear-gradient(
           180deg,
-          rgba(248, 244, 238, .25),
-          rgba(248, 244, 238, .60) 62%,
-          rgba(248, 244, 238, .86)
+          rgba(248, 244, 238, .22),
+          rgba(248, 244, 238, .48) 48%,
+          rgba(248, 244, 238, .78) 100%
         );
     }
 
     .hero-content {
       position: relative;
-      z-index: 2;
+      z-index: 3;
+      animation: reveal 1.2s ease both;
 
       padding: 38px 28px;
 
-      background: rgba(248, 244, 238, .78);
-
+      background: rgba(248, 244, 238, .70);
       backdrop-filter: blur(4px);
       -webkit-backdrop-filter: blur(4px);
 
@@ -265,8 +252,6 @@
 
       box-shadow:
         0 18px 50px rgba(40, 34, 27, .10);
-
-      animation: reveal 1.2s ease both;
     }
 
     .hero h1 {
@@ -306,25 +291,27 @@
       font-size: 11px;
       letter-spacing: .25em;
       color: var(--muted);
-      z-index: 4;
+      z-index: 5;
       animation: fadePulse 2.8s ease-in-out infinite;
     }
 
     /* =========================
-       INVITATION
-       RINGS BACKGROUND
+       INVITATION / RINGS
     ========================== */
 
     .invitation {
-      min-height: 620px;
+      min-height: 650px;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
+
       position: relative;
       overflow: hidden;
-      padding: 80px 25px;
-      background: var(--paper2);
+
+      padding: 90px 30px;
+
+      background: var(--paper);
     }
 
     .invitation-bg {
@@ -338,8 +325,8 @@
       height: 100%;
       object-fit: cover;
       object-position: center;
-      display: block;
-      filter: saturate(.70) sepia(.05);
+      filter: saturate(.72) sepia(.05);
+      transform: scale(1.02);
     }
 
     .invitation-overlay {
@@ -350,53 +337,94 @@
       background:
         linear-gradient(
           180deg,
-          rgba(248, 244, 238, .35),
-          rgba(248, 244, 238, .58) 50%,
-          rgba(248, 244, 238, .72)
+          rgba(248, 244, 238, .32),
+          rgba(248, 244, 238, .56) 45%,
+          rgba(248, 244, 238, .74)
         );
     }
 
     .invitation-content {
       position: relative;
-      z-index: 2;
+      z-index: 3;
 
-      width: min(640px, 100%);
-      padding: 48px 34px;
+      max-width: 650px;
 
-      background: rgba(250, 247, 241, .82);
+      padding: 42px 35px;
 
-      backdrop-filter: blur(4px);
-      -webkit-backdrop-filter: blur(4px);
+      background: rgba(255, 253, 249, .67);
 
-      border: 1px solid rgba(255, 255, 255, .85);
+      border: 1px solid rgba(255, 255, 255, .7);
+
+      backdrop-filter: blur(3px);
+      -webkit-backdrop-filter: blur(3px);
 
       box-shadow:
-        0 20px 60px rgba(40, 34, 27, .12);
+        0 18px 50px rgba(40, 34, 27, .08);
 
       animation: reveal 1s ease both;
     }
 
-    .invitation-content h2 {
-      margin-bottom: 24px;
+    .invitation .lead {
+      color: #514c45;
     }
 
     /* =========================
        CALENDAR
+       BACKGROUND = WEDDING PHOTO
     ========================== */
 
+    .calendar-section {
+      padding-top: 70px;
+      padding-bottom: 90px;
+      background: var(--paper);
+    }
+
     .calendar-wrap {
+      position: relative;
+      overflow: hidden;
+
+      max-width: 430px;
       margin: 0 auto;
-      max-width: 390px;
 
-      background: var(--white);
-      border: 1px solid var(--line);
+      padding: 30px 24px 26px;
 
-      padding: 22px 20px 20px;
+      border: 1px solid rgba(255, 255, 255, .7);
 
       box-shadow:
-        0 12px 35px rgba(85, 71, 53, .05);
+        0 18px 45px rgba(60, 48, 35, .16);
+
+      isolation: isolate;
 
       animation: reveal 1s ease both;
+    }
+
+    /* Фото, которое раньше было в блоке
+       "25 ҚЫРКҮЙЕК 2026" */
+    .calendar-bg {
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+    }
+
+    .calendar-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      filter: saturate(.58) sepia(.05);
+    }
+
+    .calendar-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+
+      background:
+        linear-gradient(
+          180deg,
+          rgba(248, 244, 238, .72),
+          rgba(248, 244, 238, .79)
+        );
     }
 
     .calendar-head {
@@ -405,7 +433,8 @@
       align-items: flex-end;
 
       padding-bottom: 15px;
-      border-bottom: 1px solid var(--line);
+
+      border-bottom: 1px solid rgba(160, 124, 84, .38);
     }
 
     .calendar-month {
@@ -441,9 +470,11 @@
 
     .day {
       height: 42px;
+
       display: flex;
       align-items: center;
       justify-content: center;
+
       position: relative;
     }
 
@@ -458,6 +489,7 @@
 
     .day.selected::before {
       content: "";
+
       position: absolute;
 
       width: 41px;
@@ -468,16 +500,21 @@
       background: var(--gold);
 
       z-index: -1;
+
+      box-shadow:
+        0 4px 15px rgba(160, 124, 84, .25);
     }
 
     .day.selected::after {
       content: "";
+
       position: absolute;
 
       width: 50px;
       height: 50px;
 
       border: 1px solid var(--gold);
+
       border-radius: 50%;
 
       z-index: -1;
@@ -487,6 +524,8 @@
 
     /* =========================
        PHOTO BREAK
+       Оригинальное фото теперь
+       также используется в календаре
     ========================== */
 
     .photo-break {
@@ -511,16 +550,19 @@
     .photo-break-image {
       width: 43%;
       height: 300px;
+
       overflow: hidden;
 
       box-shadow:
-        0 12px 30px rgba(81, 70, 56, .07);
+        0 12px 30px rgba(81, 70, 56, .10);
     }
 
     .photo-break-image img {
       width: 100%;
       height: 100%;
+
       object-fit: cover;
+
       display: block;
 
       filter: saturate(.58) sepia(.05);
@@ -594,16 +636,13 @@
     ========================== */
 
     .hosts {
-      max-width: 570px;
-      margin: 46px auto 0;
+      margin-top: 46px;
 
       padding: 28px;
 
       border: 1px solid var(--line);
 
       background: #f3eee6;
-
-      text-align: center;
 
       animation: reveal 1s ease both;
     }
@@ -623,17 +662,18 @@
     .hosts-names {
       font-family: "Cormorant Garamond", serif;
       font-size: 42px;
-
       margin-top: 8px;
     }
 
     /* =========================
-       COUNTDOWN
+       RSVP / COUNTDOWN
     ========================== */
 
     .rsvp {
       background: var(--dark);
+
       color: #f7f2e9;
+
       text-align: center;
     }
 
@@ -648,11 +688,12 @@
 
     .count {
       display: flex;
+
       justify-content: center;
 
       gap: 28px;
 
-      margin: 36px 0 0;
+      margin: 36px 0 10px;
     }
 
     .num {
@@ -662,20 +703,21 @@
 
     .unit {
       font-size: 10px;
+
       letter-spacing: .16em;
+
       color: #aaa49a;
+
       text-transform: uppercase;
     }
 
     /* =========================
        ADDRESS
-       ASLAY RESTAURANT PHOTO
+       RESTAURANT PHOTO
     ========================== */
 
     .address-section {
       min-height: 650px;
-
-      padding: 70px 25px;
 
       display: flex;
       align-items: center;
@@ -683,17 +725,19 @@
 
       text-align: center;
 
+      padding: 80px 30px;
+
       position: relative;
+
       overflow: hidden;
 
-      background: #e8e0d5;
+      background: #6e6255;
     }
-
-    /* Restaurant photo */
 
     .address-bg {
       position: absolute;
       inset: 0;
+
       z-index: 0;
     }
 
@@ -702,30 +746,29 @@
       height: 100%;
 
       object-fit: cover;
-      object-position: center;
-
-      display: block;
 
       /*
-        Фото специально оставляем
-        достаточно видимым.
+        asl.jpeg = 1091x811.
+        Для ресторана показываем фото
+        максимально крупно, но без сильного
+        высветления.
       */
+      object-position: center center;
+
       filter:
-        saturate(.82)
-        sepia(.03)
-        brightness(.92);
-
-      transform: scale(1.02);
-
-      transition: transform 1.2s ease;
+        saturate(.92)
+        contrast(.98)
+        brightness(.88);
     }
 
-    .address-section:hover .address-bg img {
-      transform: scale(1.035);
-    }
-
-    /* Лёгкий overlay */
-
+    /*
+      Главное изменение:
+      затемнение теперь намного слабее,
+      чем раньше.
+      
+      Фото ресторана хорошо видно,
+      а нижняя часть темнее для текста.
+    */
     .address-overlay {
       position: absolute;
       inset: 0;
@@ -735,92 +778,77 @@
       background:
         linear-gradient(
           180deg,
-          rgba(248, 244, 238, .22) 0%,
-          rgba(248, 244, 238, .08) 30%,
-          rgba(248, 244, 238, .18) 60%,
-          rgba(248, 244, 238, .38) 100%
+          rgba(25, 22, 18, .12) 0%,
+          rgba(25, 22, 18, .18) 38%,
+          rgba(25, 22, 18, .42) 70%,
+          rgba(25, 22, 18, .68) 100%
         );
     }
 
-    /* Outer borders */
-
-    .address-section::before {
-      content: "";
-
-      position: absolute;
-
-      inset: 18px;
-
-      border: 1px solid rgba(255, 255, 255, .78);
-
-      z-index: 3;
-
-      pointer-events: none;
+    .address-section .decor-flower {
+      color: #fff8ed;
+      opacity: .55;
     }
-
-    .address-section::after {
-      content: "";
-
-      position: absolute;
-
-      inset: 28px;
-
-      border: 1px solid rgba(255, 255, 255, .48);
-
-      z-index: 3;
-
-      pointer-events: none;
-    }
-
-    /* Text card */
 
     .address-content {
       position: relative;
-      z-index: 2;
 
-      width: min(570px, 100%);
+      z-index: 3;
 
-      padding: 48px 35px;
+      width: min(100%, 570px);
 
-      background: rgba(250, 247, 241, .80);
+      padding: 42px 32px;
 
-      backdrop-filter: blur(4px);
-      -webkit-backdrop-filter: blur(4px);
+      /*
+        Не белая карточка.
+        Прозрачный тёмный фон позволяет
+        увидеть ресторан за текстом.
+      */
+      background: rgba(25, 22, 18, .36);
 
-      border: 1px solid rgba(255, 255, 255, .86);
+      border: 1px solid rgba(255, 255, 255, .48);
+
+      backdrop-filter: blur(2px);
+      -webkit-backdrop-filter: blur(2px);
 
       box-shadow:
-        0 20px 60px rgba(40, 34, 27, .20);
-
-      animation: reveal 1s ease both;
+        0 20px 55px rgba(0, 0, 0, .20);
     }
 
     .address-content .flourish {
-      margin-bottom: 18px;
+      color: #f3dfc3;
+    }
+
+    .address-content .flourish::before,
+    .address-content .flourish::after {
+      background: rgba(255, 255, 255, .48);
     }
 
     .address-content .eyebrow {
-      margin-bottom: 16px;
-      color: #665f55;
+      color: rgba(255, 255, 255, .82);
+      margin-bottom: 15px;
     }
 
     .address-content h2 {
-      margin: 0 0 20px;
+      color: #fffaf2;
 
-      color: var(--ink);
+      font-size: 52px;
 
-      font-size: 56px;
-      line-height: .94;
+      text-shadow:
+        0 2px 14px rgba(0, 0, 0, .28);
     }
 
     .address-city {
-      margin: 0 auto 25px;
+      color: rgba(255, 255, 255, .92);
 
-      color: #514c45;
-
-      font-size: 18px;
+      font-size: 17px;
 
       line-height: 1.8;
+
+      margin: 0 0 25px;
+
+      text-shadow:
+        0 2px 10px rgba(0, 0, 0, .35);
     }
 
     /* =========================
@@ -847,26 +875,29 @@
 
       text-transform: uppercase;
 
-      transition: .25s;
+      transition:
+        background .25s ease,
+        color .25s ease,
+        transform .25s ease;
+    }
 
-      cursor: pointer;
+    .btn:hover {
+      background: #f7f2e9;
+      color: var(--dark);
+      transform: translateY(-2px);
     }
 
     .map-btn {
-      margin-top: 5px;
+      color: #fffaf2;
 
-      color: var(--ink);
+      border-color: rgba(255, 255, 255, .62);
 
-      background: rgba(255, 253, 249, .76);
-
-      border-color: #b9aa98;
+      background: rgba(255, 255, 255, .08);
     }
 
     .map-btn:hover {
-      background: var(--dark);
-      color: #fff;
-
-      border-color: var(--dark);
+      background: #fffaf2;
+      color: var(--dark);
     }
 
     /* =========================
@@ -888,7 +919,7 @@
     }
 
     /* =========================
-       TABLET / MOBILE
+       MOBILE
     ========================== */
 
     @media (max-width: 520px) {
@@ -898,7 +929,8 @@
       }
 
       section {
-        padding: 70px 20px;
+        padding-left: 20px;
+        padding-right: 20px;
       }
 
       .hero {
@@ -916,15 +948,18 @@
 
       .hero-content {
         width: calc(100% - 20px);
+
         padding: 30px 18px;
+
+        background: rgba(248, 244, 238, .73);
       }
 
       .hero h1 {
-        font-size: clamp(65px, 20vw, 92px);
+        font-size: clamp(68px, 19vw, 100px);
       }
 
       .hero-date {
-        font-size: 28px;
+        font-size: 27px;
       }
 
       .hero-place {
@@ -933,7 +968,7 @@
       }
 
       .scroll {
-        bottom: 24px;
+        bottom: 25px;
         font-size: 9px;
       }
 
@@ -941,14 +976,14 @@
 
       .invitation {
         min-height: 650px;
-        padding: 55px 18px;
+        padding: 70px 18px;
       }
 
       .invitation-content {
-        padding: 38px 22px;
+        padding: 34px 20px;
       }
 
-      .invitation-content h2 {
+      .invitation h2 {
         font-size: 45px;
       }
 
@@ -959,8 +994,17 @@
 
       /* Calendar */
 
+      .calendar-section {
+        padding: 60px 18px 75px;
+      }
+
       .calendar-wrap {
         width: 100%;
+        padding: 25px 16px 22px;
+      }
+
+      .calendar-month {
+        font-size: 29px;
       }
 
       .calendar-grid {
@@ -970,9 +1014,9 @@
       /* Photo */
 
       .photo-break {
-        min-height: 430px;
+        min-height: auto;
 
-        padding: 55px 18px;
+        padding: 55px 18px 65px;
 
         display: block;
       }
@@ -984,8 +1028,8 @@
       }
 
       .photo-break-image {
-        width: 76%;
-        height: 240px;
+        width: 82%;
+        height: 250px;
 
         margin-left: auto;
       }
@@ -998,7 +1042,7 @@
       }
 
       .time {
-        font-size: 32px;
+        font-size: 34px;
       }
 
       .event-title {
@@ -1011,16 +1055,12 @@
 
       /* Hosts */
 
-      .hosts {
-        padding: 25px 18px;
-      }
-
       .hosts-label {
         font-size: 22px;
       }
 
       .hosts-names {
-        font-size: 36px;
+        font-size: 37px;
       }
 
       /* Countdown */
@@ -1030,7 +1070,7 @@
       }
 
       .num {
-        font-size: 36px;
+        font-size: 35px;
       }
 
       .unit {
@@ -1045,69 +1085,88 @@
         padding: 55px 18px;
       }
 
-      .address-section::before {
-        inset: 12px;
-      }
-
-      .address-section::after {
-        inset: 20px;
-      }
-
-      .address-content {
-        width: calc(100% - 8px);
-
-        padding: 38px 22px;
-
-        background: rgba(250, 247, 241, .84);
-
-        backdrop-filter: blur(4px);
-        -webkit-backdrop-filter: blur(4px);
-      }
-
-      .address-content h2 {
-        font-size: 45px;
-      }
-
-      .address-city {
-        font-size: 16px;
-      }
-
       .address-bg img {
-        object-position: center;
-
-        filter:
-          saturate(.86)
-          sepia(.03)
-          brightness(.94);
+        /*
+          На телефоне фото чуть выше,
+          чтобы фасад/основная часть ресторана
+          не обрезалась.
+        */
+        object-position: center center;
       }
 
       .address-overlay {
         background:
           linear-gradient(
             180deg,
-            rgba(248, 244, 238, .20),
-            rgba(248, 244, 238, .08) 35%,
-            rgba(248, 244, 238, .32) 100%
+            rgba(25, 22, 18, .10) 0%,
+            rgba(25, 22, 18, .20) 38%,
+            rgba(25, 22, 18, .50) 72%,
+            rgba(25, 22, 18, .72) 100%
           );
       }
 
-      .btn {
-        padding: 13px 18px;
-        font-size: 9px;
+      .address-content {
+        padding: 34px 20px;
+
+        background: rgba(25, 22, 18, .40);
       }
 
-      h2 {
-        font-size: 45px;
+      .address-content h2 {
+        font-size: 44px;
+      }
+
+      .address-city {
+        font-size: 16px;
+      }
+
+      .map-btn {
+        width: 100%;
+        padding-left: 12px;
+        padding-right: 12px;
       }
 
       .decor-flower {
-        font-size: 42px;
+        font-size: 44px;
       }
     }
 
-    /* =========================
-       REDUCED MOTION
-    ========================== */
+    @media (max-width: 360px) {
+
+      .hero h1 {
+        font-size: 64px;
+      }
+
+      .hero-date {
+        font-size: 24px;
+      }
+
+      .calendar-wrap {
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+
+      .calendar-grid {
+        font-size: 19px;
+      }
+
+      .day.selected::before {
+        width: 37px;
+        height: 37px;
+      }
+
+      .day.selected::after {
+        width: 46px;
+        height: 46px;
+      }
+
+      .count {
+        gap: 10px;
+      }
+
+      .num {
+        font-size: 31px;
+      }
+    }
 
     @media (prefers-reduced-motion: reduce) {
 
@@ -1124,8 +1183,8 @@
       }
     }
   </style>
-</head>
 
+</head>
 
 <body>
 
@@ -1137,209 +1196,250 @@
 
   <section class="hero">
 
-    <div class="hero-bg">
-      <img
-        src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1600&q=88"
-        alt="Романтикалық үйлену тойының көрінісі"
-      >
-    </div>
+```
+<div class="hero-bg">
 
-    <div class="hero-overlay"></div>
+  <img
+    src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1600&q=88"
+    alt="Романтикалық үйлену тойының көрінісі"
+  >
 
-    <div class="hero-content">
+</div>
 
-      <div class="eyebrow">
-        Тойымызға ақ ниетпен шақырамыз
-      </div>
 
-      <h1>
-        Санжар
-        <span class="amp">&amp;</span>
-        <br>
-        Камила
-      </h1>
+<div class="hero-overlay"></div>
 
-      <div class="hero-date">
-        25 · ҚЫРКҮЙЕК · 2026
-      </div>
 
-      <div class="hero-place">
-        АРЫС ҚАЛАСЫ · «АСЫЛАЙ» МЕЙРАМХАНАСЫ ·
-        ӘУЕЗОВ КӨШЕСІ, 22
-      </div>
+<div class="hero-content">
 
-    </div>
+  <div class="eyebrow">
+    Тойымызға ақ ниетпен шақырамыз
+  </div>
 
-    <div class="scroll">
-      ТӨМЕН ЖЫЛЖЫТЫҢЫЗ&nbsp; · &nbsp;↓
-    </div>
+
+  <h1>
+    Санжар
+    <span class="amp">&amp;</span>
+    <br>
+    Камила
+  </h1>
+
+
+  <div class="hero-date">
+    25 · ҚЫРКҮЙЕК · 2026
+  </div>
+
+
+  <div class="hero-place">
+    АРЫС ҚАЛАСЫ · «АСЫЛАЙ» МЕЙРАМХАНАСЫ ·
+    ӘУЕЗОВ КӨШЕСІ, 22
+  </div>
+
+</div>
+
+
+<div class="scroll">
+  ТӨМЕН ЖЫЛЖЫТЫҢЫЗ&nbsp; · &nbsp;↓
+</div>
+```
 
   </section>
 
-
   <!-- =========================
        INVITATION
-       ASSETS/RINGS.JPEG
+       RINGS BACKGROUND
   ========================== -->
 
   <section class="invitation">
 
-    <div class="invitation-bg">
-      <img
-        src="assets/rings.jpeg"
-        alt="Үйлену сақиналары"
-        loading="lazy"
-      >
-    </div>
+```
+<div class="invitation-bg">
 
-    <div class="invitation-overlay"></div>
+  <img
+    src="assets/rings.jpeg"
+    alt="Үйлену сақиналары"
+    loading="lazy"
+  >
 
-    <span class="decor-flower tl">❧</span>
-    <span class="decor-flower br">❧</span>
+</div>
 
-    <div class="invitation-content">
 
-      <div class="flourish">
-        <span class="flourish-heart">♡</span>
-      </div>
+<div class="invitation-overlay"></div>
 
-      <h2>
-        Ардақты ағайын,<br>
-        құрметті қонақтар!
-      </h2>
 
-      <p class="lead">
-        Сіздерді өміріміздегі ең қуанышты күндердің бірі —
-        шаңырақ көтеру тойымызға шын жүректен шақырамыз.
-        Ақ тілектеріңіз бен ақ ниеттеріңіз біз үшін ең үлкен сый.
-      </p>
+<span class="decor-flower tl">
+  ❧
+</span>
 
-    </div>
+<span class="decor-flower br">
+  ❧
+</span>
+
+
+<div class="invitation-content">
+
+  <div class="flourish">
+    <span class="flourish-heart">
+      ♡
+    </span>
+  </div>
+
+
+  <h2>
+    Ардақты ағайын,<br>
+    құрметті қонақтар!
+  </h2>
+
+
+  <p class="lead">
+    Сіздерді өміріміздегі ең қуанышты күндердің бірі —
+    шаңырақ көтеру тойымызға шын жүректен шақырамыз.
+    Ақ тілектеріңіз бен ақ ниеттеріңіз біз үшін ең үлкен сый.
+  </p>
+
+</div>
+```
 
   </section>
-
 
   <!-- =========================
        CALENDAR
+       WEDDING PHOTO BACKGROUND
   ========================== -->
 
-  <section class="intro">
+  <section class="calendar-section">
 
-    <div
-      class="calendar-wrap"
-      aria-label="2026 жылғы қыркүйек күнтізбесі"
+```
+<div
+  class="calendar-wrap"
+  aria-label="2026 жылғы қыркүйек күнтізбесі"
+>
+
+  <div class="calendar-bg">
+
+    <img
+      src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=900&q=88"
+      alt=""
+      aria-hidden="true"
     >
 
-      <div class="calendar-head">
-
-        <div class="calendar-month">
-          Қыркүйек
-        </div>
-
-        <div class="calendar-year">
-          2026
-        </div>
-
-      </div>
+  </div>
 
 
-      <div class="calendar-week">
-
-        <div>Дс</div>
-        <div>Сс</div>
-        <div>Ср</div>
-        <div>Бс</div>
-        <div>Жм</div>
-        <div>Сб</div>
-        <div>Жс</div>
-
-      </div>
+  <div class="calendar-overlay"></div>
 
 
-      <div class="calendar-grid">
+  <div class="calendar-head">
 
-        <div class="day empty">0</div>
-        <div class="day">1</div>
-        <div class="day">2</div>
-        <div class="day">3</div>
-        <div class="day">4</div>
-        <div class="day">5</div>
-        <div class="day">6</div>
-
-        <div class="day">7</div>
-        <div class="day">8</div>
-        <div class="day">9</div>
-        <div class="day">10</div>
-        <div class="day">11</div>
-        <div class="day">12</div>
-        <div class="day">13</div>
-
-        <div class="day">14</div>
-        <div class="day">15</div>
-        <div class="day">16</div>
-        <div class="day">17</div>
-        <div class="day">18</div>
-        <div class="day">19</div>
-        <div class="day">20</div>
-
-        <div class="day">21</div>
-        <div class="day">22</div>
-        <div class="day">23</div>
-        <div class="day">24</div>
-
-        <div
-          class="day selected"
-          aria-label="25 қыркүйек 2026"
-        >
-          25
-        </div>
-
-        <div class="day">26</div>
-        <div class="day">27</div>
-
-        <div class="day">28</div>
-        <div class="day">29</div>
-        <div class="day">30</div>
-
-        <div class="day empty">0</div>
-        <div class="day empty">0</div>
-        <div class="day empty">0</div>
-        <div class="day empty">0</div>
-
-      </div>
-
+    <div class="calendar-month">
+      Қыркүйек
     </div>
+
+    <div class="calendar-year">
+      2026
+    </div>
+
+  </div>
+
+
+  <div class="calendar-week">
+
+    <div>Дс</div>
+    <div>Сс</div>
+    <div>Ср</div>
+    <div>Бс</div>
+    <div>Жм</div>
+    <div>Сб</div>
+    <div>Жс</div>
+
+  </div>
+
+
+  <div class="calendar-grid">
+
+    <div class="day empty">0</div>
+    <div class="day">1</div>
+    <div class="day">2</div>
+    <div class="day">3</div>
+    <div class="day">4</div>
+    <div class="day">5</div>
+    <div class="day">6</div>
+
+    <div class="day">7</div>
+    <div class="day">8</div>
+    <div class="day">9</div>
+    <div class="day">10</div>
+    <div class="day">11</div>
+    <div class="day">12</div>
+    <div class="day">13</div>
+
+    <div class="day">14</div>
+    <div class="day">15</div>
+    <div class="day">16</div>
+    <div class="day">17</div>
+    <div class="day">18</div>
+    <div class="day">19</div>
+    <div class="day">20</div>
+
+    <div class="day">21</div>
+    <div class="day">22</div>
+    <div class="day">23</div>
+    <div class="day">24</div>
+
+    <div
+      class="day selected"
+      aria-label="25 қыркүйек 2026"
+    >
+      25
+    </div>
+
+    <div class="day">26</div>
+    <div class="day">27</div>
+
+    <div class="day">28</div>
+    <div class="day">29</div>
+    <div class="day">30</div>
+
+    <div class="day empty">0</div>
+    <div class="day empty">0</div>
+    <div class="day empty">0</div>
+    <div class="day empty">0</div>
+
+  </div>
+
+</div>
+```
 
   </section>
 
-
   <!-- =========================
-       PHOTO
+       PHOTO BREAK
   ========================== -->
 
   <section class="photo-break">
 
-    <div class="photo-break-copy">
+```
+<div class="photo-break-copy">
 
-      <span class="eyebrow">
-        25 ҚЫРКҮЙЕК 2026
-      </span>
+  <span class="eyebrow">
+    25 ҚЫРКҮЙЕК 2026
+  </span>
 
-    </div>
+</div>
 
 
-    <div class="photo-break-image">
+<div class="photo-break-image">
 
-      <img
-        src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=900&q=88"
-        alt="Свадебная фотография"
-        loading="lazy"
-      >
+  <img
+    src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=900&q=88"
+    alt="Свадебная фотография"
+    loading="lazy"
+  >
 
-    </div>
+</div>
+```
 
   </section>
-
 
   <!-- =========================
        EVENING PROGRAM
@@ -1347,83 +1447,94 @@
 
   <section>
 
-    <span class="decor-flower br">❧</span>
-
-    <div class="eyebrow">
-      Біздің қуанышымыз
-    </div>
-
-    <h2 style="margin-top:14px">
-      Кештің<br>
-      Сәттері
-    </h2>
+```
+<span class="decor-flower br">
+  ❧
+</span>
 
 
-    <div class="timeline">
-
-      <div class="event">
-
-        <div class="time">
-          18:00
-        </div>
-
-        <div>
-
-          <div class="event-title">
-
-            <span class="event-mark"></span>
-
-            Беташар
-
-          </div>
-
-          <p>
-            Ақ босаға аттап, жаңа өмірдің бастауын
-            бірге қарсы аламыз.
-          </p>
-
-        </div>
-
-      </div>
+<div class="eyebrow">
+  Біздің қуанышымыз
+</div>
 
 
-      <div class="event">
+<h2 style="margin-top:14px">
+  Кештің<br>
+  Сәттері
+</h2>
 
-        <div class="time">
-          20:00
-        </div>
 
-        <div>
+<div class="timeline">
 
-          <div class="event-title">
 
-            <span class="event-mark"></span>
+  <div class="event">
 
-            Тойдың басталуы
-
-          </div>
-
-        </div>
-
-      </div>
-
+    <div class="time">
+      18:00
     </div>
 
 
-    <div class="hosts">
+    <div>
 
-      <div class="hosts-label">
-        ТОЙ ИЕЛЕРІ
+      <div class="event-title">
+
+        <span class="event-mark"></span>
+
+        Беташар
+
       </div>
 
-      <div class="hosts-names">
-        Мұхтар &amp; Жанат
+
+      <p>
+        Ақ босаға аттап, жаңа өмірдің бастауын
+        бірге қарсы аламыз.
+      </p>
+
+    </div>
+
+  </div>
+
+
+  <div class="event">
+
+    <div class="time">
+      20:00
+    </div>
+
+
+    <div>
+
+      <div class="event-title">
+
+        <span class="event-mark"></span>
+
+        Тойдың басталуы
+
       </div>
 
     </div>
+
+  </div>
+
+
+</div>
+
+
+<div class="hosts">
+
+  <div class="hosts-label">
+    ТОЙ ИЕЛЕРІ
+  </div>
+
+
+  <div class="hosts-names">
+    Мұхтар &amp; Жанат
+  </div>
+
+</div>
+```
 
   </section>
-
 
   <!-- =========================
        COUNTDOWN
@@ -1431,196 +1542,206 @@
 
   <section class="rsvp">
 
-    <div class="flourish">
+```
+<div class="flourish">
 
-      <span class="flourish-heart">
-        ♡
-      </span>
+  <span class="flourish-heart">
+    ♡
+  </span>
 
-    </div>
-
-
-    <h2>
-      Сізді асыға күтеміз
-    </h2>
+</div>
 
 
-    <p class="lead">
-      Қуанышымыздың куәсі болып,
-      ақ тілегіңізді білдіруге келіңіз!
-    </p>
+<h2>
+  Сізді асыға күтеміз
+</h2>
 
+
+<p class="lead">
+  Қуанышымыздың куәсі болып,
+  ақ тілегіңізді білдіруге келіңіз!
+</p>
+
+
+<div
+  class="count"
+  id="countdown"
+  aria-label="Тойға дейінгі уақыт"
+>
+
+
+  <div>
 
     <div
-      class="count"
-      id="countdown"
-      aria-label="Тойға дейінгі уақыт"
+      class="num"
+      id="d"
     >
-
-      <div>
-
-        <div
-          class="num"
-          id="d"
-        >
-          00
-        </div>
-
-        <div class="unit">
-          күн
-        </div>
-
-      </div>
-
-
-      <div>
-
-        <div
-          class="num"
-          id="h"
-        >
-          00
-        </div>
-
-        <div class="unit">
-          сағат
-        </div>
-
-      </div>
-
-
-      <div>
-
-        <div
-          class="num"
-          id="m"
-        >
-          00
-        </div>
-
-        <div class="unit">
-          минут
-        </div>
-
-      </div>
-
-
-      <div>
-
-        <div
-          class="num"
-          id="s"
-        >
-          00
-        </div>
-
-        <div class="unit">
-          секунд
-        </div>
-
-      </div>
-
+      00
     </div>
+
+    <div class="unit">
+      күн
+    </div>
+
+  </div>
+
+
+  <div>
+
+    <div
+      class="num"
+      id="h"
+    >
+      00
+    </div>
+
+    <div class="unit">
+      сағат
+    </div>
+
+  </div>
+
+
+  <div>
+
+    <div
+      class="num"
+      id="m"
+    >
+      00
+    </div>
+
+    <div class="unit">
+      минут
+    </div>
+
+  </div>
+
+
+  <div>
+
+    <div
+      class="num"
+      id="s"
+    >
+      00
+    </div>
+
+    <div class="unit">
+      секунд
+    </div>
+
+  </div>
+
+
+</div>
+```
 
   </section>
 
-
   <!-- =========================
        ADDRESS
-       ASSETS/ASL.JPEG
+       ASL.JPEG BACKGROUND
   ========================== -->
 
   <section class="address-section">
 
-    <!-- Фото ресторана -->
+```
+<!-- Фото ресторана -->
 
-    <div class="address-bg">
+<div class="address-bg">
 
-      <img
-        src="assets/asl.jpeg"
-        alt="«Асылай» мейрамханасы"
-        loading="lazy"
-      >
+  <img
+    src="assets/asl.jpeg"
+    alt="«Асылай» мейрамханасы"
+    loading="lazy"
+  >
 
-    </div>
-
-
-    <!-- Затемнение фотографии -->
-
-    <div class="address-overlay"></div>
+</div>
 
 
-    <!-- Декоративная рамка -->
+<!-- Мягкое затемнение -->
 
-    <span class="decor-flower tl">
-      ❧
+<div class="address-overlay"></div>
+
+
+<span class="decor-flower tl">
+  ❧
+</span>
+
+
+<span class="decor-flower br">
+  ❧
+</span>
+
+
+<!-- Текст поверх фотографии -->
+
+<div class="address-content">
+
+
+  <div class="flourish">
+
+    <span class="flourish-heart">
+      ♡
     </span>
 
-    <span class="decor-flower br">
-      ❧
-    </span>
+  </div>
 
 
-    <!-- Текстовая карточка -->
-
-    <div class="address-content">
-
-      <div class="flourish">
-
-        <span class="flourish-heart">
-          ♡
-        </span>
-
-      </div>
+  <div class="eyebrow">
+    МЕКЕНЖАЙ
+  </div>
 
 
-      <div class="eyebrow">
-        МЕКЕНЖАЙ
-      </div>
+  <h2>
+    «Асылай»<br>
+    мейрамханасы
+  </h2>
 
 
-      <h2>
-        «Асылай»<br>
-        мейрамханасы
-      </h2>
+  <p class="address-city">
+    Арыс қаласы<br>
+    Әуезов көшесі, 22
+  </p>
 
 
-      <p class="address-city">
-        Арыс қаласы<br>
-        Әуезов көшесі, 22
-      </p>
+  <a
+    class="btn map-btn"
+    href="https://2gis.kz/shymkent/geo/70000001080125602/68.802451,42.433645"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    2GIS — МЕКЕНЖАЙДЫ АШУ
+  </a>
 
 
-      <a
-        class="btn map-btn"
-        href="https://2gis.kz/shymkent/geo/70000001080125602/68.802451,42.433645"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        2GIS — МЕКЕНЖАЙДЫ АШУ
-      </a>
-
-    </div>
+</div>
+```
 
   </section>
-
 
   <!-- =========================
        FOOTER
   ========================== -->
 
   <footer>
-    САНЖАР &amp; КАМИЛА · 25 ҚЫРКҮЙЕК 2026
+
+```
+САНЖАР &amp; КАМИЛА · 25 ҚЫРКҮЙЕК 2026
+```
+
   </footer>
 
 </main>
 
-
-<!-- =========================
-     COUNTDOWN SCRIPT
-========================== -->
-
 <script>
+  /*
+   * Той:
+   * 25 сентября 2026
+   * 18:00
+   * UTC+5
+   */
 
   const target =
     new Date("2026-09-25T18:00:00+05:00").getTime();
@@ -1628,50 +1749,48 @@
 
   function tick() {
 
-    let left = Math.max(
-      0,
-      target - Date.now()
-    );
+    let left =
+      Math.max(0, target - Date.now());
 
 
     let total =
       Math.floor(left / 1000);
 
 
-    const d =
+    const days =
       Math.floor(total / 86400);
 
     total %= 86400;
 
 
-    const h =
+    const hours =
       Math.floor(total / 3600);
 
     total %= 3600;
 
 
-    const m =
+    const minutes =
       Math.floor(total / 60);
 
 
-    const s =
+    const seconds =
       total % 60;
 
 
     document.getElementById("d").textContent =
-      String(d).padStart(2, "0");
+      String(days).padStart(2, "0");
 
 
     document.getElementById("h").textContent =
-      String(h).padStart(2, "0");
+      String(hours).padStart(2, "0");
 
 
     document.getElementById("m").textContent =
-      String(m).padStart(2, "0");
+      String(minutes).padStart(2, "0");
 
 
     document.getElementById("s").textContent =
-      String(s).padStart(2, "0");
+      String(seconds).padStart(2, "0");
 
   }
 
@@ -1679,9 +1798,7 @@
   tick();
 
   setInterval(tick, 1000);
-
 </script>
-
 
 </body>
 </html>
