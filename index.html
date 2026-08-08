@@ -16,6 +16,31 @@
 .countdown{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:30px}.counter{padding:17px 8px;border-radius:18px;background:#fff3db;border:1px solid #e5c28f;text-align:center}.counter b{font:600 30px "Cormorant Garamond",serif;color:var(--wine)}.counter span{display:block;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#8c6d5f}.closing{padding:110px 28px;text-align:center;background:#390b21;color:#fff0d8;position:relative;overflow:hidden}.closing:before{content:"✿";position:absolute;font-size:220px;color:#ffffff08;left:50%;top:50%;transform:translate(-50%,-50%);animation:spin 30s linear infinite}.closing p{position:relative;font:500 38px/1.05 "Cormorant Garamond",serif;margin:0}.signature{position:relative;margin-top:28px;font-size:12px;letter-spacing:.3em;color:#e9c783}.reveal{opacity:0;transform:translateY(50px) scale(.98);transition:opacity 1s ease,transform 1s cubic-bezier(.2,.75,.2,1)}.reveal.show{opacity:1;transform:none}.shine{background:linear-gradient(100deg,#5f102c 0%,#d9a74e 35%,#fff0bc 50%,#d9a74e 65%,#5f102c 100%);background-size:250% auto;color:transparent;background-clip:text;animation:shine 5s linear infinite}
 @keyframes fall{to{transform:translate3d(70px,110vh,0) rotate(720deg)}}@keyframes spin{to{transform:rotate(360deg)}}@keyframes breathe{50%{transform:scale(1.08);opacity:.65}}@keyframes sway{50%{rotate:6deg;translate:0 -8px}}@keyframes leafFloat{50%{translate:0 -12px;rotate:4deg}}@keyframes pulse{50%{opacity:.45}}@keyframes chosen{50%{transform:scale(1.1)}}@keyframes shine{to{background-position:250% center}}
 @media(max-width:390px){.names{font-size:54px.section,.calendar{padding-left:22px;padding-right:22px}.envelope{width:245px}}
+
+.music-toggle{
+  position:fixed;
+  right:14px;
+  bottom:18px;
+  z-index:90;
+  width:50px;
+  height:50px;
+  border:1px solid #ffffff40;
+  border-radius:50%;
+  background:#351022dd;
+  color:#fff;
+  font-size:21px;
+  cursor:pointer;
+  box-shadow:0 8px 25px #0005;
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+  transition:transform .25s,opacity .25s,background .25s;
+}
+.music-toggle:hover{transform:scale(1.08)}
+.music-toggle:active{transform:scale(.94)}
+.music-toggle.muted{opacity:.78;background:#1c1018dd}
+@media(max-width:390px){
+  .music-toggle{right:12px;bottom:14px;width:46px;height:46px;font-size:19px}
+}
 </style>
 </head>
 <body>
@@ -24,16 +49,56 @@
 <div class="lang"><button class="active" data-lang="kk">KZ</button><button data-lang="ru">RU</button></div>
 <div class="intro" id="intro"><div class="intro-inner"><div class="kicker" data-kk="Тойға шақыру" data-ru="Приглашение на той">Тойға шақыру</div><h1>Санжар <i>&amp;</i> Камила</h1><div class="envelope" id="envelope"><div class="env-back"></div><div class="env-paper">25.09.2026</div><div class="flap"></div><div class="seal" data-kk="АШУ" data-ru="ОТКРЫТЬ">АШУ</div></div><div class="open-note" data-kk="Конвертті басып, шақыруды ашыңыз ✦" data-ru="Нажмите на конверт и откройте приглашение ✦">Конвертті басып, шақыруды ашыңыз ✦</div></div></div>
 <section class="hero"><div class="floral"><div class="flower f1"><i class="petal"></i><i class="petal p2"></i><i class="petal p3"></i><i class="petal p4"></i><i class="petal p5"></i><i class="center"></i></div><div class="flower f2"><i class="petal"></i><i class="petal p2"></i><i class="petal p3"></i><i class="petal p4"></i><i class="petal p5"></i><i class="center"></i></div><div class="flower f3"><i class="petal"></i><i class="petal p2"></i><i class="petal p3"></i><i class="petal p4"></i><i class="petal p5"></i><i class="center"></i></div><div class="flower f4"><i class="petal"></i><i class="petal p2"></i><i class="petal p3"></i><i class="petal p4"></i><i class="petal p5"></i><i class="center"></i></div><i class="leaf l1"></i><i class="leaf l2"></i></div><div class="hero-content"><div class="eyebrow" data-kk="Бақытты күннің қуанышы" data-ru="Радость нашего особенного дня">Бақытты күннің қуанышы</div><h2 class="names">Санжар <span class="amp">&amp;</span> Камила</h2><div class="gold-line"></div><div class="hero-date" data-kk="25 ҚЫРКҮЙЕК · 2026" data-ru="25 СЕНТЯБРЯ · 2026">25 ҚЫРКҮЙЕК · 2026</div></div></section>
-<section class="section reveal"><div class="label" data-kk="Біздің қуанышымыз" data-ru="Наша радость">Біздің қуанышымыз</div><h2 class="shine" data-kk="Тойымызға төрлетіңіздер" data-ru="Добро пожаловать на наш той">Тойымызға төрлетіңіздер</h2><p class="story" data-kk="Сіздерді ақ дастарханымыздың қадірлі қонағы болып, қуанышымызды бірге бөлісуге шын жүректен шақырамыз." data-ru="От всего сердца приглашаем вас стать дорогими гостями нашего праздника и разделить с нами этот счастливый день.">Сіздерді ақ дастарханымыздың қадірлі қонағы болып, қуанышымызды бірге бөлісуге шын жүректен шақырамыз.</p><div class="owners"><div class="label" data-kk="Той иелері" data-ru="Хозяева тоя">Той иелері</div><strong>Қаппар &amp; Нағима</strong></div></section>
-<section class="section alt reveal"><div class="label" data-kk="Кештің сәттері" data-ru="Вечер">Кештің сәттері</div><h2 data-kk="Бірге қуанып, бірге тойлайық" data-ru="Пусть этот вечер станет общим праздником">Бірге қуанып, бірге тойлайық</h2><div class="events"><div class="event"><div class="time">18:00</div><div><b data-kk="Баташар" data-ru="Баташар">Баташар</b></div></div><div class="event"><div class="time">20:00</div><div><b data-kk="Тойдың басталуы" data-ru="Начало тоя">Тойдың басталуы</b></div></div></div><div class="venue"><div class="label" data-kk="Мекенжайы" data-ru="Адрес">Мекенжайы</div><h3>«Асылай»</h3><p data-kk="Арыс қаласы · 25 қыркүйек 2026 жыл" data-ru="г. Арысь · 25 сентября 2026 года">Арыс қаласы · 25 қыркүйек 2026 жыл</p><a class="gis" href="https://2gis.kz/shymkent/geo/70000001080125602/68.802451,42.433645" target="_blank" rel="noopener">⌖ <span data-kk="2GIS-та маршрутты ашу" data-ru="Открыть маршрут в 2GIS">2GIS-та маршрутты ашу</span></a></div></section>
+<section class="section reveal"><div class="label" data-kk="Біздің қуанышымыз" data-ru="Наша радость">Біздің қуанышымыз</div><h2 class="shine" data-kk="Тойымызға төрлетіңіздер" data-ru="Добро пожаловать на наш той">Тойымызға төрлетіңіздер</h2><p class="story" data-kk="Сіздерді ақ дастарханымыздың қадірлі қонағы болып, қуанышымызды бірге бөлісуге шын жүректен шақырамыз." data-ru="От всего сердца приглашаем вас стать дорогими гостями нашего праздника и разделить с нами этот счастливый день.">Сіздерді ақ дастарханымыздың қадірлі қонағы болып, қуанышымызды бірге бөлісуге шын жүректен шақырамыз.</p><div class="owners"><div class="label" data-kk="Той иелері" data-ru="Хозяева тоя">Той иелері</div><strong>Мухтар &amp; Жанар</strong></div></section>
+<section class="section alt reveal"><div class="label" data-kk="Кештің сәттері" data-ru="Вечер">Кештің сәттері</div><h2 data-kk="Бірге қуанып, бірге тойлайық" data-ru="Пусть этот вечер станет общим праздником">Бірге қуанып, бірге тойлайық</h2><div class="events"><div class="event"><div class="time">18:00</div><div><b data-kk="Баташар" data-ru="Баташар">Баташар</b></div></div><div class="event"><div class="time">20:00</div><div><b data-kk="Тойдың басталуы" data-ru="Начало тоя">Тойдың басталуы</b></div></div></div><div class="venue"><div class="label" data-kk="Мекенжайы" data-ru="Адрес">Мекенжайы</div><h3>«Асылай»</h3><p data-kk="Шымкент қаласы · 25 қыркүйек 2026 жыл" data-ru="г. Шымкент · 25 сентября 2026 года">Шымкент қаласы · 25 қыркүйек 2026 жыл</p><a class="gis" href="https://2gis.kz/shymkent/geo/70000001080125602/68.802451,42.433645" target="_blank" rel="noopener">⌖ <span data-kk="2GIS-та маршрутты ашу" data-ru="Открыть маршрут в 2GIS">2GIS-та маршрутты ашу</span></a></div></section>
 <section class="photo reveal"><img src="assets/couple.jpeg" alt="Санжар & Камила"><div class="photo-caption" data-kk="Екі жүрек · бір қуаныш" data-ru="Два сердца · одна радость">Екі жүрек · бір қуаныш</div></section>
 <section class="calendar reveal"><div class="cal-card"><div class="cal-head"><strong data-kk="Қыркүйек 2026" data-ru="Сентябрь 2026">Қыркүйек 2026</strong><span data-kk="Жұма · 25" data-ru="Пятница · 25">Жұма · 25</span></div><div class="week"><span data-kk="Дс" data-ru="Пн">Дс</span><span data-kk="Сс" data-ru="Вт">Сс</span><span data-kk="Ср" data-ru="Ср">Ср</span><span data-kk="Бс" data-ru="Чт">Бс</span><span data-kk="Жм" data-ru="Пт">Жм</span><span data-kk="Сб" data-ru="Сб">Сб</span><span data-kk="Жс" data-ru="Вс">Жс</span></div><div class="days"><span></span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span><span>13</span><span>14</span><span>15</span><span>16</span><span>17</span><span>18</span><span>19</span><span>20</span><span>21</span><span>22</span><span>23</span><span>24</span><span class="chosen">25</span><span>26</span><span>27</span><span>28</span><span>29</span><span>30</span></div><div class="countdown"><div class="counter"><b id="days">--</b><span data-kk="күн" data-ru="дней">күн</span></div><div class="counter"><b id="hours">--</b><span data-kk="сағат" data-ru="часов">сағат</span></div><div class="counter"><b id="mins">--</b><span data-kk="минут" data-ru="минут">минут</span></div></div></div></section>
 <section class="closing reveal"><p data-kk="Ақ тілектеріңізбен қуанышымызға ортақ болыңыздар ✦" data-ru="Разделите с нами этот день своими добрыми пожеланиями ✦">Ақ тілектеріңізбен қуанышымызға ортақ болыңыздар ✦</p><div class="signature">САНЖАР &amp; КАМИЛА · 25.09.2026</div></section>
 </div>
+
+<audio id="bgMusic" src="music.mp3" loop preload="auto"></audio>
+<button id="musicToggle" class="music-toggle" type="button" aria-label="Музыка" aria-pressed="false">🔊</button>
+
 <script>
 const intro=document.getElementById('intro'),env=document.getElementById('envelope');
 for(let i=0;i<24;i++){const p=document.createElement('i');p.className='petal';p.style.left=Math.random()*100+'%';p.style.animationDuration=(7+Math.random()*9)+'s';p.style.animationDelay=(-Math.random()*12)+'s';p.style.transform='scale('+(0.45+Math.random()*.9)+')';document.getElementById('petals').appendChild(p)}
-function openInvite(){env.classList.add('open');setTimeout(()=>intro.classList.add('hide'),1100)}env.addEventListener('click',openInvite);env.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openInvite()}});
+const music=document.getElementById('bgMusic');
+const musicToggle=document.getElementById('musicToggle');
+
+function updateMusicButton(){
+  const playing=!music.paused && !music.muted;
+  musicToggle.textContent=playing?'🔊':'🔇';
+  musicToggle.classList.toggle('muted',!playing);
+  musicToggle.setAttribute('aria-pressed',String(playing));
+}
+
+function startMusic(){
+  music.volume=.45;
+  music.muted=false;
+  music.play().then(updateMusicButton).catch(updateMusicButton);
+}
+
+function openInvite(){
+  env.classList.add('open');
+  startMusic();
+  setTimeout(()=>intro.classList.add('hide'),1100);
+}
+
+env.addEventListener('click',openInvite);env.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openInvite()}});
+
+musicToggle.addEventListener('click',()=>{
+  if(music.paused){
+    music.muted=false;
+    music.play().then(updateMusicButton).catch(updateMusicButton);
+  }else{
+    music.pause();
+    updateMusicButton();
+  }
+});
+
+music.addEventListener('play',updateMusicButton);
+music.addEventListener('pause',updateMusicButton);
+updateMusicButton();
 let lang=localStorage.getItem('inviteLang')||'kk';function applyLang(){document.documentElement.lang=lang;document.querySelectorAll('[data-kk]').forEach(el=>{el.textContent=el.dataset[lang]||el.dataset.kk});document.querySelectorAll('.lang button').forEach(b=>b.classList.toggle('active',b.dataset.lang===lang))}document.querySelectorAll('.lang button').forEach(b=>b.onclick=()=>{lang=b.dataset.lang;localStorage.setItem('inviteLang',lang);applyLang()});applyLang();
 const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show')}),{threshold:.14});document.querySelectorAll('.reveal').forEach(x=>io.observe(x));
 function countdown(){const target=new Date('2026-09-25T18:00:00+05:00').getTime(),now=Date.now(),d=Math.max(0,target-now);document.getElementById('days').textContent=Math.floor(d/86400000);document.getElementById('hours').textContent=Math.floor(d%86400000/3600000);document.getElementById('mins').textContent=Math.floor(d%3600000/60000)}countdown();setInterval(countdown,30000);
