@@ -1,5 +1,4 @@
 <!doctype html>
-
 <html lang="kk">
 <head>
   <meta charset="utf-8">
@@ -398,8 +397,6 @@
       animation: reveal 1s ease both;
     }
 
-    /* Фото, которое раньше было в блоке
-       "25 ҚЫРКҮЙЕК 2026" */
     .calendar-bg {
       position: absolute;
       inset: 0;
@@ -523,55 +520,11 @@
     }
 
     /* =========================
-       PHOTO BREAK
-       Оригинальное фото теперь
-       также используется в календаре
+       EVENING PROGRAM SECTION
     ========================== */
 
-    .photo-break {
-      min-height: 440px;
-
-      padding: 75px 9%;
-
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-
-      gap: 35px;
-
-      background: var(--paper);
-    }
-
-    .photo-break-copy {
-      width: 28%;
-      text-align: center;
-    }
-
-    .photo-break-image {
-      width: 43%;
-      height: 300px;
-
-      overflow: hidden;
-
-      box-shadow:
-        0 12px 30px rgba(81, 70, 56, .10);
-    }
-
-    .photo-break-image img {
-      width: 100%;
-      height: 100%;
-
-      object-fit: cover;
-
-      display: block;
-
-      filter: saturate(.58) sepia(.05);
-
-      transition: transform 1.2s ease;
-    }
-
-    .photo-break-image:hover img {
-      transform: scale(1.025);
+    section.program {
+      padding-top: 90px;
     }
 
     /* =========================
@@ -747,12 +700,6 @@
 
       object-fit: cover;
 
-      /*
-        asl.jpeg = 1091x811.
-        Для ресторана показываем фото
-        максимально крупно, но без сильного
-        высветления.
-      */
       object-position: center center;
 
       filter:
@@ -761,14 +708,6 @@
         brightness(.88);
     }
 
-    /*
-      Главное изменение:
-      затемнение теперь намного слабее,
-      чем раньше.
-      
-      Фото ресторана хорошо видно,
-      а нижняя часть темнее для текста.
-    */
     .address-overlay {
       position: absolute;
       inset: 0;
@@ -799,11 +738,6 @@
 
       padding: 42px 32px;
 
-      /*
-        Не белая карточка.
-        Прозрачный тёмный фон позволяет
-        увидеть ресторан за текстом.
-      */
       background: rgba(25, 22, 18, .36);
 
       border: 1px solid rgba(255, 255, 255, .48);
@@ -1011,27 +945,10 @@
         font-size: 21px;
       }
 
-      /* Photo */
+      /* Program section */
 
-      .photo-break {
-        min-height: auto;
-
-        padding: 55px 18px 65px;
-
-        display: block;
-      }
-
-      .photo-break-copy {
-        width: 100%;
-
-        margin-bottom: 25px;
-      }
-
-      .photo-break-image {
-        width: 82%;
-        height: 250px;
-
-        margin-left: auto;
+      section.program {
+        padding-top: 60px;
       }
 
       /* Timeline */
@@ -1086,11 +1003,6 @@
       }
 
       .address-bg img {
-        /*
-          На телефоне фото чуть выше,
-          чтобы фасад/основная часть ресторана
-          не обрезалась.
-        */
         object-position: center center;
       }
 
@@ -1196,52 +1108,42 @@
 
   <section class="hero">
 
-```
-<div class="hero-bg">
+    <div class="hero-bg">
+      <img
+        src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1600&q=88"
+        alt="Романтикалық үйлену тойының көрінісі"
+      >
+    </div>
 
-  <img
-    src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1600&q=88"
-    alt="Романтикалық үйлену тойының көрінісі"
-  >
+    <div class="hero-overlay"></div>
 
-</div>
+    <div class="hero-content">
 
+      <div class="eyebrow">
+        Тойымызға ақ ниетпен шақырамыз
+      </div>
 
-<div class="hero-overlay"></div>
+      <h1>
+        Санжар
+        <span class="amp">&amp;</span>
+        <br>
+        Камила
+      </h1>
 
+      <div class="hero-date">
+        25 · ҚЫРКҮЙЕК · 2026
+      </div>
 
-<div class="hero-content">
+      <div class="hero-place">
+        АРЫС ҚАЛАСЫ · «АСЫЛАЙ» МЕЙРАМХАНАСЫ ·
+        ӘУЕЗОВ КӨШЕСІ, 22
+      </div>
 
-  <div class="eyebrow">
-    Тойымызға ақ ниетпен шақырамыз
-  </div>
+    </div>
 
-
-  <h1>
-    Санжар
-    <span class="amp">&amp;</span>
-    <br>
-    Камила
-  </h1>
-
-
-  <div class="hero-date">
-    25 · ҚЫРКҮЙЕК · 2026
-  </div>
-
-
-  <div class="hero-place">
-    АРЫС ҚАЛАСЫ · «АСЫЛАЙ» МЕЙРАМХАНАСЫ ·
-    ӘУЕЗОВ КӨШЕСІ, 22
-  </div>
-
-</div>
-
-
-<div class="scroll">
-  ТӨМЕН ЖЫЛЖЫТЫҢЫЗ&nbsp; · &nbsp;↓
-</div>
-```
+    <div class="scroll">
+      ТӨМЕН ЖЫЛЖЫТЫҢЫЗ&nbsp; · &nbsp;↓
+    </div>
 
   </section>
 
@@ -1252,53 +1154,37 @@
 
   <section class="invitation">
 
-```
-<div class="invitation-bg">
+    <div class="invitation-bg">
+      <img
+        src="assets/rings.jpeg"
+        alt="Үйлену сақиналары"
+        loading="lazy"
+      >
+    </div>
 
-  <img
-    src="assets/rings.jpeg"
-    alt="Үйлену сақиналары"
-    loading="lazy"
-  >
+    <div class="invitation-overlay"></div>
 
-</div>
+    <span class="decor-flower tl">❧</span>
+    <span class="decor-flower br">❧</span>
 
+    <div class="invitation-content">
 
-<div class="invitation-overlay"></div>
+      <div class="flourish">
+        <span class="flourish-heart">♡</span>
+      </div>
 
+      <h2>
+        Ардақты ағайын,<br>
+        құрметті қонақтар!
+      </h2>
 
-<span class="decor-flower tl">
-  ❧
-</span>
+      <p class="lead">
+        Сіздерді өміріміздегі ең қуанышты күндердің бірі —
+        шаңырақ көтеру тойымызға шын жүректен шақырамыз.
+        Ақ тілектеріңіз бен ақ ниеттеріңіз біз үшін ең үлкен сый.
+      </p>
 
-<span class="decor-flower br">
-  ❧
-</span>
-
-
-<div class="invitation-content">
-
-  <div class="flourish">
-    <span class="flourish-heart">
-      ♡
-    </span>
-  </div>
-
-
-  <h2>
-    Ардақты ағайын,<br>
-    құрметті қонақтар!
-  </h2>
-
-
-  <p class="lead">
-    Сіздерді өміріміздегі ең қуанышты күндердің бірі —
-    шаңырақ көтеру тойымызға шын жүректен шақырамыз.
-    Ақ тілектеріңіз бен ақ ниеттеріңіз біз үшін ең үлкен сый.
-  </p>
-
-</div>
-```
+    </div>
 
   </section>
 
@@ -1309,135 +1195,89 @@
 
   <section class="calendar-section">
 
-```
-<div
-  class="calendar-wrap"
-  aria-label="2026 жылғы қыркүйек күнтізбесі"
->
-
-  <div class="calendar-bg">
-
-    <img
-      src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=900&q=88"
-      alt=""
-      aria-hidden="true"
-    >
-
-  </div>
-
-
-  <div class="calendar-overlay"></div>
-
-
-  <div class="calendar-head">
-
-    <div class="calendar-month">
-      Қыркүйек
-    </div>
-
-    <div class="calendar-year">
-      2026
-    </div>
-
-  </div>
-
-
-  <div class="calendar-week">
-
-    <div>Дс</div>
-    <div>Сс</div>
-    <div>Ср</div>
-    <div>Бс</div>
-    <div>Жм</div>
-    <div>Сб</div>
-    <div>Жс</div>
-
-  </div>
-
-
-  <div class="calendar-grid">
-
-    <div class="day empty">0</div>
-    <div class="day">1</div>
-    <div class="day">2</div>
-    <div class="day">3</div>
-    <div class="day">4</div>
-    <div class="day">5</div>
-    <div class="day">6</div>
-
-    <div class="day">7</div>
-    <div class="day">8</div>
-    <div class="day">9</div>
-    <div class="day">10</div>
-    <div class="day">11</div>
-    <div class="day">12</div>
-    <div class="day">13</div>
-
-    <div class="day">14</div>
-    <div class="day">15</div>
-    <div class="day">16</div>
-    <div class="day">17</div>
-    <div class="day">18</div>
-    <div class="day">19</div>
-    <div class="day">20</div>
-
-    <div class="day">21</div>
-    <div class="day">22</div>
-    <div class="day">23</div>
-    <div class="day">24</div>
-
     <div
-      class="day selected"
-      aria-label="25 қыркүйек 2026"
+      class="calendar-wrap"
+      aria-label="2026 жылғы қыркүйек күнтізбесі"
     >
-      25
+
+      <div class="calendar-bg">
+        <img
+          src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=900&q=88"
+          alt=""
+          aria-hidden="true"
+        >
+      </div>
+
+      <div class="calendar-overlay"></div>
+
+      <div class="calendar-head">
+        <div class="calendar-month">Қыркүйек</div>
+        <div class="calendar-year">2026</div>
+      </div>
+
+      <div class="calendar-week">
+        <div>Дс</div>
+        <div>Сс</div>
+        <div>Ср</div>
+        <div>Бс</div>
+        <div>Жм</div>
+        <div>Сб</div>
+        <div>Жс</div>
+      </div>
+
+      <div class="calendar-grid">
+
+        <div class="day empty">0</div>
+        <div class="day">1</div>
+        <div class="day">2</div>
+        <div class="day">3</div>
+        <div class="day">4</div>
+        <div class="day">5</div>
+        <div class="day">6</div>
+
+        <div class="day">7</div>
+        <div class="day">8</div>
+        <div class="day">9</div>
+        <div class="day">10</div>
+        <div class="day">11</div>
+        <div class="day">12</div>
+        <div class="day">13</div>
+
+        <div class="day">14</div>
+        <div class="day">15</div>
+        <div class="day">16</div>
+        <div class="day">17</div>
+        <div class="day">18</div>
+        <div class="day">19</div>
+        <div class="day">20</div>
+
+        <div class="day">21</div>
+        <div class="day">22</div>
+        <div class="day">23</div>
+        <div class="day">24</div>
+
+        <div
+          class="day selected"
+          aria-label="25 қыркүйек 2026"
+        >
+          25
+        </div>
+
+        <div class="day">26</div>
+        <div class="day">27</div>
+
+        <div class="day">28</div>
+        <div class="day">29</div>
+        <div class="day">30</div>
+
+        <div class="day empty">0</div>
+        <div class="day empty">0</div>
+        <div class="day empty">0</div>
+        <div class="day empty">0</div>
+
+      </div>
+
     </div>
-
-    <div class="day">26</div>
-    <div class="day">27</div>
-
-    <div class="day">28</div>
-    <div class="day">29</div>
-    <div class="day">30</div>
-
-    <div class="day empty">0</div>
-    <div class="day empty">0</div>
-    <div class="day empty">0</div>
-    <div class="day empty">0</div>
-
-  </div>
-
-</div>
-```
-
-  </section>
-
-  <!-- =========================
-       PHOTO BREAK
-  ========================== -->
-
-  <section class="photo-break">
-
-```
-<div class="photo-break-copy">
-
-  <span class="eyebrow">
-    25 ҚЫРКҮЙЕК 2026
-  </span>
-
-</div>
-
-
-<div class="photo-break-image">
-
-  <img
-    src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=900&q=88"
-    alt="Свадебная фотография"
-    loading="lazy"
-  >
-
-</div>
-```
 
   </section>
 
@@ -1445,94 +1285,51 @@
        EVENING PROGRAM
   ========================== -->
 
-  <section>
+  <section class="program">
 
-```
-<span class="decor-flower br">
-  ❧
-</span>
+    <span class="decor-flower br">❧</span>
 
-
-<div class="eyebrow">
-  Біздің қуанышымыз
-</div>
-
-
-<h2 style="margin-top:14px">
-  Кештің<br>
-  Сәттері
-</h2>
-
-
-<div class="timeline">
-
-
-  <div class="event">
-
-    <div class="time">
-      18:00
+    <div class="eyebrow">
+      Біздің қуанышымыз
     </div>
 
+    <h2 style="margin-top:14px">
+      Кештің<br>
+      Сәттері
+    </h2>
 
-    <div>
+    <div class="timeline">
 
-      <div class="event-title">
-
-        <span class="event-mark"></span>
-
-        Беташар
-
+      <div class="event">
+        <div class="time">18:00</div>
+        <div>
+          <div class="event-title">
+            <span class="event-mark"></span>
+            Беташар
+          </div>
+          <p>
+            Ақ босаға аттап, жаңа өмірдің бастауын
+            бірге қарсы аламыз.
+          </p>
+        </div>
       </div>
 
-
-      <p>
-        Ақ босаға аттап, жаңа өмірдің бастауын
-        бірге қарсы аламыз.
-      </p>
-
-    </div>
-
-  </div>
-
-
-  <div class="event">
-
-    <div class="time">
-      20:00
-    </div>
-
-
-    <div>
-
-      <div class="event-title">
-
-        <span class="event-mark"></span>
-
-        Тойдың басталуы
-
+      <div class="event">
+        <div class="time">20:00</div>
+        <div>
+          <div class="event-title">
+            <span class="event-mark"></span>
+            Тойдың басталуы
+          </div>
+        </div>
       </div>
 
     </div>
 
-  </div>
-
-
-</div>
-
-
-<div class="hosts">
-
-  <div class="hosts-label">
-    ТОЙ ИЕЛЕРІ
-  </div>
-
-
-  <div class="hosts-names">
-    Мұхтар &amp; Жанат
-  </div>
-
-</div>
-```
+    <div class="hosts">
+      <div class="hosts-label">ТОЙ ИЕЛЕРІ</div>
+      <div class="hosts-names">Мұхтар &amp; Жанат</div>
+    </div>
 
   </section>
 
@@ -1542,100 +1339,44 @@
 
   <section class="rsvp">
 
-```
-<div class="flourish">
+    <div class="flourish">
+      <span class="flourish-heart">♡</span>
+    </div>
 
-  <span class="flourish-heart">
-    ♡
-  </span>
+    <h2>Сізді асыға күтеміз</h2>
 
-</div>
-
-
-<h2>
-  Сізді асыға күтеміз
-</h2>
-
-
-<p class="lead">
-  Қуанышымыздың куәсі болып,
-  ақ тілегіңізді білдіруге келіңіз!
-</p>
-
-
-<div
-  class="count"
-  id="countdown"
-  aria-label="Тойға дейінгі уақыт"
->
-
-
-  <div>
+    <p class="lead">
+      Қуанышымыздың куәсі болып,
+      ақ тілегіңізді білдіруге келіңіз!
+    </p>
 
     <div
-      class="num"
-      id="d"
+      class="count"
+      id="countdown"
+      aria-label="Тойға дейінгі уақыт"
     >
-      00
+
+      <div>
+        <div class="num" id="d">00</div>
+        <div class="unit">күн</div>
+      </div>
+
+      <div>
+        <div class="num" id="h">00</div>
+        <div class="unit">сағат</div>
+      </div>
+
+      <div>
+        <div class="num" id="m">00</div>
+        <div class="unit">минут</div>
+      </div>
+
+      <div>
+        <div class="num" id="s">00</div>
+        <div class="unit">секунд</div>
+      </div>
+
     </div>
-
-    <div class="unit">
-      күн
-    </div>
-
-  </div>
-
-
-  <div>
-
-    <div
-      class="num"
-      id="h"
-    >
-      00
-    </div>
-
-    <div class="unit">
-      сағат
-    </div>
-
-  </div>
-
-
-  <div>
-
-    <div
-      class="num"
-      id="m"
-    >
-      00
-    </div>
-
-    <div class="unit">
-      минут
-    </div>
-
-  </div>
-
-
-  <div>
-
-    <div
-      class="num"
-      id="s"
-    >
-      00
-    </div>
-
-    <div class="unit">
-      секунд
-    </div>
-
-  </div>
-
-
-</div>
-```
 
   </section>
 
@@ -1646,78 +1387,47 @@
 
   <section class="address-section">
 
-```
-<!-- Фото ресторана -->
+    <div class="address-bg">
+      <img
+        src="assets/asl.jpeg"
+        alt="«Асылай» мейрамханасы"
+        loading="lazy"
+      >
+    </div>
 
-<div class="address-bg">
+    <div class="address-overlay"></div>
 
-  <img
-    src="assets/asl.jpeg"
-    alt="«Асылай» мейрамханасы"
-    loading="lazy"
-  >
+    <span class="decor-flower tl">❧</span>
+    <span class="decor-flower br">❧</span>
 
-</div>
+    <div class="address-content">
 
+      <div class="flourish">
+        <span class="flourish-heart">♡</span>
+      </div>
 
-<!-- Мягкое затемнение -->
+      <div class="eyebrow">МЕКЕНЖАЙ</div>
 
-<div class="address-overlay"></div>
+      <h2>
+        «Асылай»<br>
+        мейрамханасы
+      </h2>
 
+      <p class="address-city">
+        Арыс қаласы<br>
+        Әуезов көшесі, 22
+      </p>
 
-<span class="decor-flower tl">
-  ❧
-</span>
+      <a
+        class="btn map-btn"
+        href="https://2gis.kz/shymkent/geo/70000001080125602/68.802451,42.433645"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        2GIS — МЕКЕНЖАЙДЫ АШУ
+      </a>
 
-
-<span class="decor-flower br">
-  ❧
-</span>
-
-
-<!-- Текст поверх фотографии -->
-
-<div class="address-content">
-
-
-  <div class="flourish">
-
-    <span class="flourish-heart">
-      ♡
-    </span>
-
-  </div>
-
-
-  <div class="eyebrow">
-    МЕКЕНЖАЙ
-  </div>
-
-
-  <h2>
-    «Асылай»<br>
-    мейрамханасы
-  </h2>
-
-
-  <p class="address-city">
-    Арыс қаласы<br>
-    Әуезов көшесі, 22
-  </p>
-
-
-  <a
-    class="btn map-btn"
-    href="https://2gis.kz/shymkent/geo/70000001080125602/68.802451,42.433645"
-    target="_blank"
-    rel="noopener noreferrer"
-  >
-    2GIS — МЕКЕНЖАЙДЫ АШУ
-  </a>
-
-
-</div>
-```
+    </div>
 
   </section>
 
@@ -1726,11 +1436,7 @@
   ========================== -->
 
   <footer>
-
-```
-САНЖАР &amp; КАМИЛА · 25 ҚЫРКҮЙЕК 2026
-```
-
+    САНЖАР &amp; КАМИЛА · 25 ҚЫРКҮЙЕК 2026
   </footer>
 
 </main>
@@ -1743,60 +1449,29 @@
    * UTC+5
    */
 
-  const target =
-    new Date("2026-09-25T18:00:00+05:00").getTime();
-
+  const target = new Date("2026-09-25T18:00:00+05:00").getTime();
 
   function tick() {
 
-    let left =
-      Math.max(0, target - Date.now());
+    let left = Math.max(0, target - Date.now());
+    let total = Math.floor(left / 1000);
 
-
-    let total =
-      Math.floor(left / 1000);
-
-
-    const days =
-      Math.floor(total / 86400);
-
+    const days = Math.floor(total / 86400);
     total %= 86400;
 
-
-    const hours =
-      Math.floor(total / 3600);
-
+    const hours = Math.floor(total / 3600);
     total %= 3600;
 
+    const minutes = Math.floor(total / 60);
+    const seconds = total % 60;
 
-    const minutes =
-      Math.floor(total / 60);
-
-
-    const seconds =
-      total % 60;
-
-
-    document.getElementById("d").textContent =
-      String(days).padStart(2, "0");
-
-
-    document.getElementById("h").textContent =
-      String(hours).padStart(2, "0");
-
-
-    document.getElementById("m").textContent =
-      String(minutes).padStart(2, "0");
-
-
-    document.getElementById("s").textContent =
-      String(seconds).padStart(2, "0");
-
+    document.getElementById("d").textContent = String(days).padStart(2, "0");
+    document.getElementById("h").textContent = String(hours).padStart(2, "0");
+    document.getElementById("m").textContent = String(minutes).padStart(2, "0");
+    document.getElementById("s").textContent = String(seconds).padStart(2, "0");
   }
 
-
   tick();
-
   setInterval(tick, 1000);
 </script>
 
