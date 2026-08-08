@@ -1351,16 +1351,13 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
 
-      font-size: 12px;
-      letter-spacing: .1em;
-      color: var(--muted);
       text-align: center;
     }
 
     .envelope-hint-arrow {
-      font-size: 20px;
+      font-size: 22px;
       color: var(--gold);
       animation: hintBounce 1.6s ease-in-out infinite;
     }
@@ -1368,9 +1365,23 @@
     .envelope-hint-text {
       display: inline-block;
       min-width: 1px;
-      min-height: 1.4em;
+      min-height: 1.3em;
 
-      border-right: 1px solid var(--gold);
+      padding: 10px 20px;
+
+      background: rgba(255, 253, 249, .88);
+      border: 1px solid rgba(160, 124, 84, .4);
+      border-radius: 22px;
+
+      box-shadow: 0 6px 18px rgba(40, 34, 27, .12);
+
+      font-family: "Cormorant Garamond", serif;
+      font-size: 19px;
+      font-weight: 600;
+      letter-spacing: .06em;
+      color: var(--ink);
+
+      border-right: 2px solid var(--gold);
 
       white-space: nowrap;
       overflow: hidden;
@@ -1467,8 +1478,9 @@
 
     @media (max-width: 520px) {
 
-      .envelope-hint {
-        font-size: 11px;
+      .envelope-hint-text {
+        font-size: 16px;
+        padding: 9px 16px;
       }
 
       .top-controls {
@@ -1783,7 +1795,7 @@
     </div>
 
     <div class="hosts">
-      <div class="hosts-label" data-i18n="hosts_label">ТОЙ ИЕЛЕРІ</div>
+      <div class="hosts-label" data-i18n="hosts_label">той иелері</div>
       <div class="hosts-names">Қаппар &amp; Нағима</div>
     </div>
 
@@ -2118,8 +2130,8 @@
       // guests time to actually read each section as it passes
       setTimeout(() => {
         const distance = document.body.scrollHeight - window.scrollY;
-        // ~90px per second — slow enough to read comfortably
-        const duration = Math.max(18000, distance * 11);
+        // ~35px per second — very slow, unhurried pace for reading
+        const duration = Math.max(35000, distance * 28);
         smoothScrollTo(document.body.scrollHeight, duration);
       }, 400);
     }, 550 + 900);
