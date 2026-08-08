@@ -16,7 +16,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <link
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Manrope:wght@400;500;600&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,500;1,600;1,700&family=Manrope:wght@400;500;600&display=swap"
     rel="stylesheet"
   >
 
@@ -254,20 +254,21 @@
     }
 
     .hero h1 {
-      font-family: "Cormorant Garamond", serif;
-      font-weight: 500;
-      font-size: clamp(70px, 16vw, 130px);
-      line-height: .72;
-      margin: 30px 0 24px;
-      letter-spacing: -.04em;
+      font-family: "Playfair Display", "Cormorant Garamond", serif;
+      font-style: italic;
+      font-weight: 600;
+      font-size: clamp(56px, 13vw, 108px);
+      line-height: .92;
+      margin: 28px 0 22px;
+      letter-spacing: -.01em;
     }
 
     .hero h1 .amp {
-      font-size: .55em;
+      font-size: .6em;
       color: var(--gold);
-      font-style: italic;
+      font-weight: 500;
       vertical-align: middle;
-      margin: 0 3px;
+      margin: 0 6px;
     }
 
     .hero-date {
@@ -929,7 +930,7 @@
       }
 
       .hero h1 {
-        font-size: clamp(68px, 19vw, 100px);
+        font-size: clamp(52px, 16vw, 78px);
       }
 
       .hero-date {
@@ -1088,7 +1089,7 @@
     @media (max-width: 360px) {
 
       .hero h1 {
-        font-size: 64px;
+        font-size: 46px;
       }
 
       .hero-date {
@@ -2112,8 +2113,61 @@
       envelopeScreen.classList.add("is-hidden");
       topControls.classList.add("is-visible");
       document.body.style.overflow = "";
+
+      // Very slowly glide all the way down to the footer, giving
+      // guests time to actually read each section as it passes
+      setTimeout(() => {
+        const distance = document.body.scrollHeight - window.scrollY;
+        // ~90px per second — slow enough to read comfortably
+        const duration = Math.max(18000, distance * 11);
+        smoothScrollTo(document.body.scrollHeight, duration);
+      }, 400);
     }, 550 + 900);
   }
+
+  // Custom very slow, gently-eased scroll animation
+  let autoScrollActive = false;
+
+  function smoothScrollTo(targetY, duration) {
+    const startY = window.scrollY;
+    const distance = targetY - startY;
+    const startTime = performance.now();
+    autoScrollActive = true;
+
+    // Soft sine ease — gentle start and finish, steady in between
+    function easeInOutSine(t) {
+      return -(Math.cos(Math.PI * t) - 1) / 2;
+    }
+
+    function step(now) {
+      if (!autoScrollActive) return;
+
+      const elapsed = now - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = easeInOutSine(progress);
+
+      window.scrollTo(0, startY + distance * eased);
+
+      if (progress < 1) {
+        requestAnimationFrame(step);
+      } else {
+        autoScrollActive = false;
+      }
+    }
+
+    requestAnimationFrame(step);
+  }
+
+  // If the guest wants to scroll themselves, hand control back to them
+  ["wheel", "touchstart", "keydown"].forEach((evt) => {
+    window.addEventListener(
+      evt,
+      () => {
+        autoScrollActive = false;
+      },
+      { passive: true }
+    );
+  });
 
   envelope.addEventListener("click", openEnvelope);
   envelope.addEventListener("keydown", (e) => {
