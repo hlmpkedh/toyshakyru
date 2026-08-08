@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Тойға шақыру — 5 нұсқа</title>
+  <meta name="description" content="Тойға арналған бес шақыру үлгісі." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root { --ink:#1e2d28; --muted:#708079; --paper:#f8f5ed; --line:#d9dfd7; --accent:#b08a55; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; color:var(--ink); background:var(--paper); font-family:"DM Sans",sans-serif; }
+    a { color:inherit; text-decoration:none; }
+    .shell { width:min(1180px,calc(100% - 40px)); margin:auto; }
+    header { padding:28px 0; display:flex; align-items:center; justify-content:space-between; }
+    .brand { font:600 28px/1 "Cormorant Garamond",serif; letter-spacing:.04em; }
+    .brand span { color:var(--accent); }
+    .hint { font-size:12px; letter-spacing:.14em; color:var(--muted); text-transform:uppercase; }
+    .hero { min-height:420px; padding:70px 0 100px; display:grid; grid-template-columns:1.1fr .9fr; gap:70px; align-items:center; }
+    .eyebrow { color:var(--accent); font-size:12px; letter-spacing:.22em; text-transform:uppercase; font-weight:700; }
+    h1 { font:500 clamp(58px,8vw,106px)/.82 "Cormorant Garamond",serif; margin:24px 0 28px; letter-spacing:-.04em; }
+    .hero p { color:var(--muted); font-size:17px; line-height:1.7; max-width:480px; margin:0; }
+    .hero-art { height:310px; border-radius:180px 180px 16px 16px; background:radial-gradient(circle at 65% 25%,#e8d1a0 0 8%,transparent 9%), linear-gradient(145deg,#d8e1d1,#f0e3c5 48%,#c9d4ca); position:relative; overflow:hidden; }
+    .hero-art:before,.hero-art:after { content:""; position:absolute; border:1px solid rgba(255,255,255,.8); border-radius:50%; }
+    .hero-art:before { width:230px; height:230px; left:32px; top:46px; }
+    .hero-art:after { width:130px; height:130px; right:48px; bottom:32px; }
+    .hero-art .date { position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); text-align:center; color:#fff; text-shadow:0 1px 16px rgba(42,49,41,.22); }
+    .date strong { display:block; font:500 76px/0.8 "Cormorant Garamond",serif; }
+    .date small { letter-spacing:.2em; font-size:11px; text-transform:uppercase; }
+    .section-title { display:flex; justify-content:space-between; align-items:end; margin:0 0 22px; }
+    h2 { font:500 42px/1 "Cormorant Garamond",serif; margin:0; }
+    .section-title p { color:var(--muted); font-size:13px; margin:0; }
+    .variants { display:grid; grid-template-columns:repeat(5,1fr); gap:14px; padding-bottom:80px; }
+    .card { min-height:330px; padding:12px; border:1px solid var(--line); background:#fff; border-radius:16px; display:flex; flex-direction:column; transition:.35s ease; }
+    .card:hover { transform:translateY(-8px); border-color:var(--accent); box-shadow:0 20px 40px rgba(45,57,47,.11); }
+    .preview { height:230px; border-radius:10px; overflow:hidden; position:relative; color:white; padding:19px; display:flex; flex-direction:column; justify-content:space-between; }
+    .preview:after { content:""; position:absolute; inset:0; background:linear-gradient(transparent 50%,rgba(0,0,0,.26)); pointer-events:none; }
+    .preview > * { position:relative; z-index:1; }
+    .p1 { background:radial-gradient(circle at 70% 30%,#ead19e 0 9%,transparent 10%),linear-gradient(145deg,#819b8a,#d2b78b); }
+    .p2 { background:radial-gradient(circle,#8e7352 0 1px,transparent 1px) 0 0/15px 15px,#101b35; }
+    .p3 { background:linear-gradient(135deg,#d4a28a,#8b4d40); }
+    .p4 { background:radial-gradient(circle at 60% 20%,#c8958e 0 7%,transparent 8%),linear-gradient(145deg,#260d19,#8c3f4e); }
+    .p5 { background:linear-gradient(145deg,#a7c2ad,#e0c98d); }
+    .preview .number { font:600 12px/1 "DM Sans"; letter-spacing:.15em; }
+    .preview .mini-name { font:500 33px/.85 "Cormorant Garamond"; letter-spacing:-.03em; }
+    .card-meta { padding:14px 5px 2px; }
+    .card-meta h3 { margin:0 0 5px; font:600 25px/1 "Cormorant Garamond",serif; }
+    .card-meta p { margin:0; color:var(--muted); font-size:12px; }
+    .open { margin-top:auto; padding:12px 5px 0; font-size:12px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--accent); }
+    footer { border-top:1px solid var(--line); padding:22px 0 30px; color:var(--muted); font-size:12px; display:flex; justify-content:space-between; }
+    @media(max-width:900px){ .variants{grid-template-columns:repeat(2,1fr)} .hero{grid-template-columns:1fr;gap:40px;padding-top:35px} .hero-art{height:240px} }
+    @media(max-width:520px){ .shell{width:min(100% - 28px,1180px)} header{align-items:flex-start}.hint{max-width:130px;text-align:right;line-height:1.4}.variants{grid-template-columns:1fr 1fr;gap:10px}.card{min-height:300px;padding:8px}.preview{height:195px;padding:13px}.preview .mini-name{font-size:28px}h1{font-size:68px}.section-title{display:block}.section-title p{margin-top:10px}footer{display:block;line-height:1.7} }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <header><a class="brand" href="index.html">той<span>.</span>шақыру</a><div class="hint">Бес түрлі нұсқа<br />Бір әдемі күн</div></header>
+    <main>
+      <section class="hero">
+        <div><div class="eyebrow">Арнайы күнге арналған</div><h1>Махаббат<br />тойы.</h1><p>Жақындарыңызға арналған бес ерекше шақыру үлгісінің бірін таңдаңыз.</p></div>
+        <div class="hero-art"><div class="date"><small>күні</small><strong>15</strong><small>қыркүйек · 2026</small></div></div>
+      </section>
+      <section id="variants">
+        <div class="section-title"><h2>Үлгілер</h2><p>Таңдау үшін нұсқаны басыңыз</p></div>
+        <div class="variants">
+          <a class="card" href="v1.html"><div class="preview p1"><span class="number">01 / ЖҰМСАҚ</span><span class="mini-name">Ақ<br />маржан</span></div><div class="card-meta"><h3>Ақ маржан</h3><p>Жылы, нәзік, табиғи</p></div><span class="open">Көру →</span></a>
+          <a class="card" href="v2.html"><div class="preview p2"><span class="number">02 / САЛТАНАТТЫ</span><span class="mini-name">Көк<br />жиек</span></div><div class="card-meta"><h3>Көкжиек</h3><p>Түнгі аспан, салтанат</p></div><span class="open">Көру →</span></a>
+          <a class="card" href="v3.html"><div class="preview p3"><span class="number">03 / ДӘСТҮРЛІ</span><span class="mini-name">Алтын<br />өрнек</span></div><div class="card-meta"><h3>Алтын өрнек</h3><p>Қазақы нақыш, жылылық</p></div><span class="open">Көру →</span></a>
+          <a class="card" href="v4.html"><div class="preview p4"><span class="number">04 / КЕШКІ</span><span class="mini-name">Түнгі<br />той</span></div><div class="card-meta"><h3>Түнгі той</h3><p>Кино атмосферасы, терең түс</p></div><span class="open">Көру →</span></a>
+          <a class="card" href="v5.html"><div class="preview p5"><span class="number">05 / ДАЛАЛЫҚ</span><span class="mini-name">Дала<br />самалы</span></div><div class="card-meta"><h3>Дала самалы</h3><p>Жеңіл, ашық, еркін</p></div><span class="open">Көру →</span></a>
+        </div>
+      </section>
+    </main>
+    <footer><span>Сіздерді қуанышымызға ортақ болуға шақырамыз.</span><span>15 ҚЫРКҮЙЕК · 2026</span></footer>
+  </div>
+</body>
+</html>
