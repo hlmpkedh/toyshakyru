@@ -1,10 +1,13 @@
-
 <!doctype html>
 <html lang="kk">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f7f3ed">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <meta
+    name="theme-color"
+    content="#f7f3ed"
+  >
 
   <meta
     name="description"
@@ -13,15 +16,9 @@
 
   <title>Санжар & Камила — Тойға шақыру</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <link
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Manrope:wght@400;500;600&display=swap"
-    rel="stylesheet"
-  >
-
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Manrope:wght@400;500;600&display=swap');
+
     :root {
       --paper: #f8f4ee;
       --paper2: #eee5d8;
@@ -49,243 +46,49 @@
       font-size: 17px;
     }
 
-    img {
-      max-width: 100%;
-    }
-
     .page {
       width: 100%;
       max-width: 760px;
       margin: 0 auto;
       background: var(--paper);
       overflow: hidden;
-      box-shadow: 0 0 60px #00000014;
+      box-shadow: 0 0 60px rgba(0, 0, 0, .08);
     }
 
     /* =========================
-       GENERAL
-    ========================= */
+       COMMON
+    ========================== */
 
     section {
-      position: relative;
       padding: 88px 30px;
-    }
-
-    h2 {
-      margin: 0 0 22px;
-      font-family: "Cormorant Garamond", serif;
-      font-weight: 500;
-      font-size: 56px;
-      line-height: 0.94;
-    }
-
-    .eyebrow {
-      color: var(--muted);
-      font-size: 12px;
-      letter-spacing: 0.24em;
-      text-transform: uppercase;
-    }
-
-    .lead {
-      max-width: 590px;
-      margin: 0 auto;
-      color: #625e56;
-      font-size: 18px;
-      line-height: 1.85;
+      position: relative;
     }
 
     .intro {
       text-align: center;
     }
 
-    /* =========================
-       ANIMATIONS
-    ========================= */
-
-    @keyframes heartFloat {
-      0%,
-      100% {
-        transform: translateY(0) scale(1);
-      }
-
-      50% {
-        transform: translateY(-5px) scale(1.08);
-      }
+    .eyebrow {
+      font-size: 12px;
+      letter-spacing: .24em;
+      text-transform: uppercase;
+      color: var(--muted);
     }
 
-    @keyframes fadePulse {
-      0%,
-      100% {
-        opacity: 0.45;
-      }
-
-      50% {
-        opacity: 1;
-      }
-    }
-
-    @keyframes reveal {
-      from {
-        opacity: 0;
-        transform: translateY(14px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes botanical {
-      0%,
-      100% {
-        transform: rotate(-18deg) translateY(0);
-      }
-
-      50% {
-        transform: rotate(-12deg) translateY(-5px);
-      }
-    }
-
-    /* =========================
-       HERO
-    ========================= */
-
-    .hero {
-      position: relative;
-      min-height: 100svh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 50px 25px;
-      text-align: center;
-      overflow: hidden;
-    }
-
-    .hero-bg {
-      position: absolute;
-      inset: 0;
-      z-index: 0;
-    }
-
-    .hero-bg img {
-      width: 100%;
-      height: 100%;
-      display: block;
-      object-fit: cover;
-      object-position: center 42%;
-      filter: saturate(0.72) sepia(0.08);
-    }
-
-    .hero-overlay {
-      position: absolute;
-      inset: 0;
-      z-index: 0;
-      background:
-        linear-gradient(
-          180deg,
-          rgba(248, 244, 238, 0.20),
-          rgba(248, 244, 238, 0.62) 68%,
-          rgba(248, 244, 238, 0.90)
-        );
-    }
-
-    .hero::before,
-    .hero::after {
-      content: "";
-      position: absolute;
-      pointer-events: none;
-      z-index: 3;
-    }
-
-    .hero::before {
-      inset: 18px;
-      border: 1px solid var(--line);
-    }
-
-    .hero::after {
-      inset: 28px;
-      border: 1px solid #e4ddd3;
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      max-width: 680px;
-      padding: 38px 28px;
-      background: rgba(248, 244, 238, 0.78);
-      border: 1px solid rgba(255, 255, 255, 0.72);
-      box-shadow: 0 18px 50px rgba(40, 34, 27, 0.10);
-      backdrop-filter: blur(4px);
-      animation: reveal 1.2s ease both;
-    }
-
-    .hero h1 {
-      margin: 30px 0 24px;
+    h2 {
       font-family: "Cormorant Garamond", serif;
       font-weight: 500;
-      font-size: clamp(70px, 16vw, 130px);
-      line-height: 0.72;
-      letter-spacing: -0.04em;
+      font-size: 56px;
+      line-height: .94;
+      margin: 0 0 22px;
     }
 
-    .hero h1 .amp {
-      margin: 0 3px;
-      color: var(--gold);
-      font-size: 0.55em;
-      font-style: italic;
-      vertical-align: middle;
-    }
-
-    .hero-date {
-      font-family: "Cormorant Garamond", serif;
-      font-size: 32px;
-      letter-spacing: 0.12em;
-    }
-
-    .hero-place {
-      margin-top: 11px;
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.6;
-      letter-spacing: 0.12em;
-    }
-
-    .scroll {
-      position: absolute;
-      bottom: 34px;
-      z-index: 4;
-      color: var(--muted);
-      font-size: 11px;
-      letter-spacing: 0.25em;
-      animation: fadePulse 2.8s ease-in-out infinite;
-    }
-
-    /* =========================
-       DECOR
-    ========================= */
-
-    .decor-flower {
-      position: absolute;
-      pointer-events: none;
-      color: #b59a7b;
-      opacity: 0.28;
-      font-family: "Cormorant Garamond", serif;
-      font-size: 52px;
-      line-height: 1;
-      animation: botanical 7s ease-in-out infinite;
-    }
-
-    .decor-flower.tl {
-      top: 22px;
-      left: 18px;
-      transform: rotate(-18deg);
-    }
-
-    .decor-flower.br {
-      right: 18px;
-      bottom: 22px;
-      transform: rotate(162deg);
+    .lead {
+      max-width: 590px;
+      margin: 0 auto;
+      color: #625e56;
+      line-height: 1.85;
+      font-size: 18px;
     }
 
     .flourish {
@@ -293,8 +96,8 @@
       align-items: center;
       justify-content: center;
       gap: 14px;
-      margin-bottom: 20px;
       color: var(--gold);
+      margin-bottom: 20px;
     }
 
     .flourish::before,
@@ -313,82 +116,294 @@
     }
 
     /* =========================
-       INVITATION WITH RINGS IMAGE
-    ========================= */
+       ANIMATIONS
+    ========================== */
 
-    .invitation {
-      min-height: 680px;
+    @keyframes heartFloat {
+      0%,
+      100% {
+        transform: translateY(0) scale(1);
+      }
+
+      50% {
+        transform: translateY(-5px) scale(1.08);
+      }
+    }
+
+    @keyframes fadePulse {
+      0%,
+      100% {
+        opacity: .45;
+      }
+
+      50% {
+        opacity: 1;
+      }
+    }
+
+    @keyframes reveal {
+      from {
+        opacity: 0;
+        transform: translateY(14px);
+      }
+
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    @keyframes botanical {
+      0%,
+      100% {
+        transform: rotate(-18deg) translateY(0);
+      }
+
+      50% {
+        transform: rotate(-12deg) translateY(-5px);
+      }
+    }
+
+    .decor-flower {
+      position: absolute;
+      pointer-events: none;
+      color: #b59a7b;
+      opacity: .28;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 52px;
+      line-height: 1;
+      animation: botanical 7s ease-in-out infinite;
+      z-index: 2;
+    }
+
+    .decor-flower.tl {
+      left: 18px;
+      top: 22px;
+      transform: rotate(-18deg);
+    }
+
+    .decor-flower.br {
+      right: 18px;
+      bottom: 22px;
+      transform: rotate(162deg);
+    }
+
+    /* =========================
+       HERO
+    ========================== */
+
+    .hero {
+      min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 90px 30px;
       text-align: center;
+      padding: 50px 25px;
+      position: relative;
       overflow: hidden;
+    }
+
+    .hero::before,
+    .hero::after {
+      content: "";
+      position: absolute;
+      pointer-events: none;
+      z-index: 3;
+    }
+
+    .hero::before {
+      inset: 18px;
+      border: 1px solid rgba(255, 255, 255, .55);
+    }
+
+    .hero::after {
+      inset: 28px;
+      border: 1px solid rgba(255, 255, 255, .32);
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .hero-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 42%;
+      display: block;
+      filter: saturate(.72) sepia(.08);
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
 
       background:
         linear-gradient(
-          rgba(248, 244, 238, 0.40),
-          rgba(248, 244, 238, 0.68)
-        ),
-        url("assets/rings.jpeg") center center / cover no-repeat;
+          180deg,
+          rgba(248, 244, 238, .25),
+          rgba(248, 244, 238, .60) 62%,
+          rgba(248, 244, 238, .86)
+        );
     }
 
-    .invitation::before {
-      content: "";
+    .hero-content {
+      position: relative;
+      z-index: 2;
+
+      padding: 38px 28px;
+
+      background: rgba(248, 244, 238, .78);
+
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+
+      border: 1px solid rgba(255, 255, 255, .72);
+
+      box-shadow:
+        0 18px 50px rgba(40, 34, 27, .10);
+
+      animation: reveal 1.2s ease both;
+    }
+
+    .hero h1 {
+      font-family: "Cormorant Garamond", serif;
+      font-weight: 500;
+      font-size: clamp(70px, 16vw, 130px);
+      line-height: .72;
+      margin: 30px 0 24px;
+      letter-spacing: -.04em;
+    }
+
+    .hero h1 .amp {
+      font-size: .55em;
+      color: var(--gold);
+      font-style: italic;
+      vertical-align: middle;
+      margin: 0 3px;
+    }
+
+    .hero-date {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 32px;
+      letter-spacing: .12em;
+    }
+
+    .hero-place {
+      font-size: 13px;
+      color: var(--muted);
+      letter-spacing: .12em;
+      margin-top: 11px;
+      line-height: 1.7;
+    }
+
+    .scroll {
+      position: absolute;
+      bottom: 34px;
+      font-size: 11px;
+      letter-spacing: .25em;
+      color: var(--muted);
+      z-index: 4;
+      animation: fadePulse 2.8s ease-in-out infinite;
+    }
+
+    /* =========================
+       INVITATION
+       RINGS BACKGROUND
+    ========================== */
+
+    .invitation {
+      min-height: 620px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      padding: 80px 25px;
+      background: var(--paper2);
+    }
+
+    .invitation-bg {
       position: absolute;
       inset: 0;
-      background: rgba(255, 250, 242, 0.14);
-      backdrop-filter: blur(1.5px);
-      pointer-events: none;
+      z-index: 0;
     }
 
-    .invitation::after {
-      content: "";
+    .invitation-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      filter: saturate(.70) sepia(.05);
+    }
+
+    .invitation-overlay {
       position: absolute;
-      inset: 18px;
-      border: 1px solid rgba(160, 124, 84, 0.45);
-      pointer-events: none;
+      inset: 0;
+      z-index: 1;
+
+      background:
+        linear-gradient(
+          180deg,
+          rgba(248, 244, 238, .35),
+          rgba(248, 244, 238, .58) 50%,
+          rgba(248, 244, 238, .72)
+        );
     }
 
     .invitation-content {
       position: relative;
       z-index: 2;
-      width: 100%;
-      max-width: 650px;
-      padding: 44px 38px;
-      background: rgba(248, 244, 238, 0.80);
-      border: 1px solid rgba(255, 255, 255, 0.70);
-      box-shadow: 0 18px 50px rgba(40, 34, 27, 0.13);
-      backdrop-filter: blur(6px);
+
+      width: min(640px, 100%);
+      padding: 48px 34px;
+
+      background: rgba(250, 247, 241, .82);
+
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+
+      border: 1px solid rgba(255, 255, 255, .85);
+
+      box-shadow:
+        0 20px 60px rgba(40, 34, 27, .12);
+
       animation: reveal 1s ease both;
     }
 
-    .invitation h2 {
-      margin-bottom: 26px;
-    }
-
-    .invitation .lead {
-      max-width: 560px;
+    .invitation-content h2 {
+      margin-bottom: 24px;
     }
 
     /* =========================
        CALENDAR
-    ========================= */
+    ========================== */
 
     .calendar-wrap {
+      margin: 0 auto;
       max-width: 390px;
-      margin: 46px auto 0;
-      padding: 22px 20px 20px;
+
       background: var(--white);
       border: 1px solid var(--line);
-      box-shadow: 0 12px 35px #5547350c;
+
+      padding: 22px 20px 20px;
+
+      box-shadow:
+        0 12px 35px rgba(85, 71, 53, .05);
+
       animation: reveal 1s ease both;
     }
 
     .calendar-head {
       display: flex;
-      align-items: flex-end;
       justify-content: space-between;
+      align-items: flex-end;
+
       padding-bottom: 15px;
       border-bottom: 1px solid var(--line);
     }
@@ -399,9 +414,9 @@
     }
 
     .calendar-year {
-      color: var(--muted);
       font-size: 12px;
-      letter-spacing: 0.15em;
+      letter-spacing: .15em;
+      color: var(--muted);
     }
 
     .calendar-week,
@@ -412,10 +427,10 @@
     }
 
     .calendar-week {
-      padding: 14px 0 9px;
-      color: var(--muted);
       font-size: 12px;
-      letter-spacing: 0.06em;
+      color: var(--muted);
+      padding: 14px 0 9px;
+      letter-spacing: .06em;
     }
 
     .calendar-grid {
@@ -425,11 +440,11 @@
     }
 
     .day {
-      position: relative;
       height: 42px;
       display: flex;
       align-items: center;
       justify-content: center;
+      position: relative;
     }
 
     .day.empty {
@@ -437,42 +452,54 @@
     }
 
     .day.selected {
-      z-index: 1;
       color: #fff;
+      z-index: 1;
     }
 
     .day.selected::before {
       content: "";
       position: absolute;
-      z-index: -1;
+
       width: 41px;
       height: 41px;
+
       border-radius: 50%;
+
       background: var(--gold);
+
+      z-index: -1;
     }
 
     .day.selected::after {
       content: "";
       position: absolute;
-      z-index: -1;
+
       width: 50px;
       height: 50px;
+
       border: 1px solid var(--gold);
       border-radius: 50%;
-      opacity: 0.45;
+
+      z-index: -1;
+
+      opacity: .45;
     }
 
     /* =========================
        PHOTO BREAK
-    ========================= */
+    ========================== */
 
     .photo-break {
       min-height: 440px;
+
+      padding: 75px 9%;
+
       display: flex;
       align-items: center;
       justify-content: space-between;
+
       gap: 35px;
-      padding: 75px 9%;
+
       background: var(--paper);
     }
 
@@ -485,15 +512,19 @@
       width: 43%;
       height: 300px;
       overflow: hidden;
-      box-shadow: 0 12px 30px #5146380b;
+
+      box-shadow:
+        0 12px 30px rgba(81, 70, 56, .07);
     }
 
     .photo-break-image img {
       width: 100%;
       height: 100%;
-      display: block;
       object-fit: cover;
-      filter: saturate(0.58) sepia(0.05);
+      display: block;
+
+      filter: saturate(.58) sepia(.05);
+
       transition: transform 1.2s ease;
     }
 
@@ -503,82 +534,102 @@
 
     /* =========================
        TIMELINE
-    ========================= */
+    ========================== */
 
     .timeline {
       max-width: 570px;
       margin: 42px auto 0;
+
       border-top: 1px solid var(--line);
+
       animation: reveal 1s ease both;
     }
 
     .event {
       display: grid;
       grid-template-columns: 95px 1fr;
+
       gap: 22px;
+
       padding: 25px 0;
+
       border-bottom: 1px solid var(--line);
     }
 
     .time {
-      color: var(--gold);
       font-family: "Cormorant Garamond", serif;
       font-size: 38px;
+      color: var(--gold);
       font-weight: 500;
     }
 
     .event-title {
-      margin-bottom: 6px;
       font-size: 14px;
       font-weight: 600;
+      margin-bottom: 6px;
     }
 
     .event p {
-      margin: 0;
       color: var(--muted);
       font-size: 12px;
+      margin: 0;
       line-height: 1.7;
     }
 
     .event-mark {
       width: 7px;
       height: 7px;
-      display: inline-block;
-      margin-right: 9px;
+
       border: 1px solid var(--gold);
+
       transform: rotate(45deg);
+
+      display: inline-block;
+
+      margin-right: 9px;
     }
 
     /* =========================
        HOSTS
-    ========================= */
+    ========================== */
 
     .hosts {
-      margin-top: 46px;
+      max-width: 570px;
+      margin: 46px auto 0;
+
       padding: 28px;
-      background: #f3eee6;
+
       border: 1px solid var(--line);
+
+      background: #f3eee6;
+
+      text-align: center;
+
       animation: reveal 1s ease both;
     }
 
     .hosts-label {
-      color: var(--ink);
       font-family: "Cormorant Garamond", serif;
       font-size: 26px;
       font-weight: 600;
-      letter-spacing: 0.18em;
+
+      letter-spacing: .18em;
+
+      color: var(--ink);
+
       text-transform: uppercase;
     }
 
     .hosts-names {
-      margin-top: 8px;
       font-family: "Cormorant Garamond", serif;
       font-size: 42px;
+
+      margin-top: 8px;
     }
 
     /* =========================
-       RSVP
-    ========================= */
+       COUNTDOWN
+    ========================== */
 
     .rsvp {
       background: var(--dark);
@@ -598,8 +649,10 @@
     .count {
       display: flex;
       justify-content: center;
+
       gap: 28px;
-      margin: 36px 0 31px;
+
+      margin: 36px 0 0;
     }
 
     .num {
@@ -608,106 +661,249 @@
     }
 
     .unit {
-      color: #aaa49a;
       font-size: 10px;
-      letter-spacing: 0.16em;
+      letter-spacing: .16em;
+      color: #aaa49a;
       text-transform: uppercase;
     }
 
     /* =========================
        ADDRESS
-    ========================= */
+       ASLAY RESTAURANT PHOTO
+    ========================== */
 
-    .address {
-      margin-top: 35px;
+    .address-section {
+      min-height: 650px;
+
+      padding: 70px 25px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      text-align: center;
+
+      position: relative;
+      overflow: hidden;
+
+      background: #e8e0d5;
+    }
+
+    /* Restaurant photo */
+
+    .address-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .address-bg img {
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+      object-position: center;
+
+      display: block;
+
+      /*
+        Фото специально оставляем
+        достаточно видимым.
+      */
+      filter:
+        saturate(.82)
+        sepia(.03)
+        brightness(.92);
+
+      transform: scale(1.02);
+
+      transition: transform 1.2s ease;
+    }
+
+    .address-section:hover .address-bg img {
+      transform: scale(1.035);
+    }
+
+    /* Лёгкий overlay */
+
+    .address-overlay {
+      position: absolute;
+      inset: 0;
+
+      z-index: 1;
+
+      background:
+        linear-gradient(
+          180deg,
+          rgba(248, 244, 238, .22) 0%,
+          rgba(248, 244, 238, .08) 30%,
+          rgba(248, 244, 238, .18) 60%,
+          rgba(248, 244, 238, .38) 100%
+        );
+    }
+
+    /* Outer borders */
+
+    .address-section::before {
+      content: "";
+
+      position: absolute;
+
+      inset: 18px;
+
+      border: 1px solid rgba(255, 255, 255, .78);
+
+      z-index: 3;
+
+      pointer-events: none;
+    }
+
+    .address-section::after {
+      content: "";
+
+      position: absolute;
+
+      inset: 28px;
+
+      border: 1px solid rgba(255, 255, 255, .48);
+
+      z-index: 3;
+
+      pointer-events: none;
+    }
+
+    /* Text card */
+
+    .address-content {
+      position: relative;
+      z-index: 2;
+
+      width: min(570px, 100%);
+
+      padding: 48px 35px;
+
+      background: rgba(250, 247, 241, .80);
+
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+
+      border: 1px solid rgba(255, 255, 255, .86);
+
+      box-shadow:
+        0 20px 60px rgba(40, 34, 27, .20);
+
       animation: reveal 1s ease both;
     }
 
-    .address strong {
-      font-family: "Cormorant Garamond", serif;
-      font-size: 32px;
-      font-weight: 500;
+    .address-content .flourish {
+      margin-bottom: 18px;
     }
 
-    .address p {
-      color: var(--muted);
-      font-size: 17px;
+    .address-content .eyebrow {
+      margin-bottom: 16px;
+      color: #665f55;
+    }
+
+    .address-content h2 {
+      margin: 0 0 20px;
+
+      color: var(--ink);
+
+      font-size: 56px;
+      line-height: .94;
+    }
+
+    .address-city {
+      margin: 0 auto 25px;
+
+      color: #514c45;
+
+      font-size: 18px;
+
       line-height: 1.8;
     }
 
     /* =========================
        BUTTON
-    ========================= */
+    ========================== */
 
     .btn {
       display: inline-flex;
-      min-height: 46px;
+
       align-items: center;
       justify-content: center;
+
       padding: 14px 25px;
+
       border: 1px solid #918a7e;
+
       color: inherit;
+
       text-decoration: none;
+
       font-size: 10px;
-      letter-spacing: 0.14em;
+
+      letter-spacing: .14em;
+
       text-transform: uppercase;
-      transition: 0.25s ease;
-    }
 
-    .btn:hover {
-      background: #f7f2e9;
-      color: var(--dark);
-    }
+      transition: .25s;
 
-    .btn:focus-visible {
-      outline: 2px solid var(--gold);
-      outline-offset: 3px;
+      cursor: pointer;
     }
 
     .map-btn {
-      margin-top: 10px;
+      margin-top: 5px;
+
       color: var(--ink);
-      border-color: var(--line);
+
+      background: rgba(255, 253, 249, .76);
+
+      border-color: #b9aa98;
+    }
+
+    .map-btn:hover {
+      background: var(--dark);
+      color: #fff;
+
+      border-color: var(--dark);
     }
 
     /* =========================
        FOOTER
-    ========================= */
+    ========================== */
 
     footer {
-      padding: 45px 24px;
-      color: var(--muted);
-      font-size: 10px;
-      letter-spacing: 0.12em;
       text-align: center;
+
+      padding: 45px 24px;
+
+      color: var(--muted);
+
+      font-size: 10px;
+
+      letter-spacing: .12em;
+
+      background: var(--paper);
     }
 
     /* =========================
-       MOBILE
-    ========================= */
+       TABLET / MOBILE
+    ========================== */
 
     @media (max-width: 520px) {
+
       body {
         font-size: 16px;
       }
 
       section {
-        padding: 68px 20px;
+        padding: 70px 20px;
       }
-
-      h2 {
-        font-size: 45px;
-      }
-
-      .lead {
-        font-size: 17px;
-      }
-
-      /* Hero */
 
       .hero {
         min-height: 100svh;
-        padding: 36px 16px;
+        padding: 40px 18px;
       }
 
       .hero::before {
@@ -719,13 +915,12 @@
       }
 
       .hero-content {
-        max-width: 92%;
+        width: calc(100% - 20px);
         padding: 30px 18px;
       }
 
       .hero h1 {
-        font-size: clamp(58px, 19vw, 88px);
-        line-height: 0.78;
+        font-size: clamp(65px, 20vw, 92px);
       }
 
       .hero-date {
@@ -733,40 +928,40 @@
       }
 
       .hero-place {
-        font-size: 12px;
-        line-height: 1.6;
+        font-size: 11px;
+        line-height: 1.7;
       }
 
       .scroll {
         bottom: 24px;
+        font-size: 9px;
       }
 
       /* Invitation */
 
       .invitation {
         min-height: 650px;
-        padding: 65px 18px;
-        background-position: center center;
-      }
-
-      .invitation::after {
-        inset: 12px;
+        padding: 55px 18px;
       }
 
       .invitation-content {
-        padding: 34px 22px;
+        padding: 38px 22px;
       }
 
-      .invitation h2 {
-        font-size: 42px;
+      .invitation-content h2 {
+        font-size: 45px;
       }
 
-      .invitation .lead {
+      .lead {
         font-size: 16px;
-        line-height: 1.75;
+        line-height: 1.8;
       }
 
       /* Calendar */
+
+      .calendar-wrap {
+        width: 100%;
+      }
 
       .calendar-grid {
         font-size: 21px;
@@ -776,18 +971,22 @@
 
       .photo-break {
         min-height: 430px;
-        display: block;
+
         padding: 55px 18px;
+
+        display: block;
       }
 
       .photo-break-copy {
         width: 100%;
+
         margin-bottom: 25px;
       }
 
       .photo-break-image {
         width: 76%;
         height: 240px;
+
         margin-left: auto;
       }
 
@@ -803,79 +1002,115 @@
       }
 
       .event-title {
-        font-size: 14px;
+        font-size: 16px;
       }
 
       .event p {
-        font-size: 12px;
+        font-size: 14px;
       }
 
       /* Hosts */
 
       .hosts {
-        padding: 22px 16px;
+        padding: 25px 18px;
       }
 
       .hosts-label {
-        font-size: 20px;
+        font-size: 22px;
       }
 
       .hosts-names {
-        font-size: 34px;
+        font-size: 36px;
       }
 
       /* Countdown */
 
       .count {
-        gap: 14px;
+        gap: 15px;
       }
 
       .num {
-        font-size: 34px;
+        font-size: 36px;
       }
 
       .unit {
-        font-size: 9px;
+        font-size: 8px;
       }
 
       /* Address */
 
-      .address strong {
-        font-size: 29px;
+      .address-section {
+        min-height: 650px;
+
+        padding: 55px 18px;
       }
 
-      .address p {
+      .address-section::before {
+        inset: 12px;
+      }
+
+      .address-section::after {
+        inset: 20px;
+      }
+
+      .address-content {
+        width: calc(100% - 8px);
+
+        padding: 38px 22px;
+
+        background: rgba(250, 247, 241, .84);
+
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+      }
+
+      .address-content h2 {
+        font-size: 45px;
+      }
+
+      .address-city {
         font-size: 16px;
       }
-    }
 
-    @media (max-width: 360px) {
-      .hero h1 {
-        font-size: 56px;
+      .address-bg img {
+        object-position: center;
+
+        filter:
+          saturate(.86)
+          sepia(.03)
+          brightness(.94);
       }
 
-      .hero-date {
-        font-size: 24px;
+      .address-overlay {
+        background:
+          linear-gradient(
+            180deg,
+            rgba(248, 244, 238, .20),
+            rgba(248, 244, 238, .08) 35%,
+            rgba(248, 244, 238, .32) 100%
+          );
       }
 
-      .count {
-        gap: 9px;
+      .btn {
+        padding: 13px 18px;
+        font-size: 9px;
       }
 
-      .num {
-        font-size: 30px;
+      h2 {
+        font-size: 45px;
       }
 
-      .event {
-        grid-template-columns: 70px 1fr;
+      .decor-flower {
+        font-size: 42px;
       }
     }
 
     /* =========================
        REDUCED MOTION
-    ========================= */
+    ========================== */
 
     @media (prefers-reduced-motion: reduce) {
+
       html {
         scroll-behavior: auto;
       }
@@ -883,488 +1118,570 @@
       *,
       *::before,
       *::after {
-        animation-duration: 0.01ms !important;
+        animation-duration: .01ms !important;
         animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
+        transition-duration: .01ms !important;
       }
     }
   </style>
 </head>
 
+
 <body>
 
-  <main class="page">
+<main class="page">
 
-    <!-- =========================
-         HERO
-    ========================== -->
+  <!-- =========================
+       HERO
+  ========================== -->
 
-    <section class="hero">
+  <section class="hero">
 
-      <div class="hero-bg">
-        <img
-          src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1600&q=88"
-          alt="Романтикалық үйлену тойының көрінісі"
-        >
-      </div>
+    <div class="hero-bg">
+      <img
+        src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1600&q=88"
+        alt="Романтикалық үйлену тойының көрінісі"
+      >
+    </div>
 
-      <div class="hero-overlay"></div>
+    <div class="hero-overlay"></div>
 
-      <div class="hero-content">
-
-        <div class="eyebrow">
-          Тойымызға ақ ниетпен шақырамыз
-        </div>
-
-        <h1>
-          Санжар
-          <span class="amp">&amp;</span>
-          <br>
-          Камила
-        </h1>
-
-        <div class="hero-date">
-          25 · ҚЫРКҮЙЕК · 2026
-        </div>
-
-        <div class="hero-place">
-          АРЫС ҚАЛАСЫ · «АСЫЛАЙ» МЕЙРАМХАНАСЫ ·
-          ӘУЕЗОВ КӨШЕСІ, 22
-        </div>
-
-      </div>
-
-      <div class="scroll">
-        ТӨМЕН ЖЫЛЖЫТЫҢЫЗ&nbsp; · &nbsp;↓
-      </div>
-
-    </section>
-
-
-    <!-- =========================
-         INVITATION
-         RINGS IMAGE BACKGROUND
-    ========================== -->
-
-    <section class="invitation">
-
-      <span class="decor-flower tl">❧</span>
-      <span class="decor-flower br">❧</span>
-
-      <div class="invitation-content">
-
-        <div class="flourish">
-          <span class="flourish-heart">♡</span>
-        </div>
-
-        <h2>
-          Ардақты ағайын,<br>
-          құрметті қонақтар!
-        </h2>
-
-        <p class="lead">
-          Сіздерді өміріміздегі ең қуанышты күндердің бірі —
-          шаңырақ көтеру тойымызға шын жүректен шақырамыз.
-          Ақ тілектеріңіз бен ақ ниеттеріңіз біз үшін ең үлкен сый.
-        </p>
-
-      </div>
-
-    </section>
-
-
-    <!-- =========================
-         CALENDAR
-    ========================== -->
-
-    <section class="intro">
-
-      <div class="calendar-wrap" aria-label="2026 жылғы қыркүйек күнтізбесі">
-
-        <div class="calendar-head">
-          <div class="calendar-month">
-            Қыркүйек
-          </div>
-
-          <div class="calendar-year">
-            2026
-          </div>
-        </div>
-
-        <div class="calendar-week">
-          <div>Дс</div>
-          <div>Сс</div>
-          <div>Ср</div>
-          <div>Бс</div>
-          <div>Жм</div>
-          <div>Сб</div>
-          <div>Жс</div>
-        </div>
-
-        <div class="calendar-grid">
-
-          <div class="day empty">0</div>
-          <div class="day">1</div>
-          <div class="day">2</div>
-          <div class="day">3</div>
-          <div class="day">4</div>
-          <div class="day">5</div>
-          <div class="day">6</div>
-
-          <div class="day">7</div>
-          <div class="day">8</div>
-          <div class="day">9</div>
-          <div class="day">10</div>
-          <div class="day">11</div>
-          <div class="day">12</div>
-          <div class="day">13</div>
-
-          <div class="day">14</div>
-          <div class="day">15</div>
-          <div class="day">16</div>
-          <div class="day">17</div>
-          <div class="day">18</div>
-          <div class="day">19</div>
-          <div class="day">20</div>
-
-          <div class="day">21</div>
-          <div class="day">22</div>
-          <div class="day">23</div>
-          <div class="day">24</div>
-
-          <div
-            class="day selected"
-            aria-label="25 қыркүйек 2026"
-          >
-            25
-          </div>
-
-          <div class="day">26</div>
-          <div class="day">27</div>
-
-          <div class="day">28</div>
-          <div class="day">29</div>
-          <div class="day">30</div>
-
-          <div class="day empty">0</div>
-          <div class="day empty">0</div>
-          <div class="day empty">0</div>
-          <div class="day empty">0</div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =========================
-         PHOTO
-    ========================== -->
-
-    <section class="photo-break">
-
-      <div class="photo-break-copy">
-        <span class="eyebrow">
-          25 ҚЫРКҮЙЕК 2026
-        </span>
-      </div>
-
-      <div class="photo-break-image">
-        <img
-          src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=900&q=88"
-          alt="Свадебная фотография"
-          loading="lazy"
-        >
-      </div>
-
-    </section>
-
-
-    <!-- =========================
-         EVENING PROGRAM
-    ========================== -->
-
-    <section>
-
-      <span class="decor-flower br">❧</span>
+    <div class="hero-content">
 
       <div class="eyebrow">
-        Біздің қуанышымыз
+        Тойымызға ақ ниетпен шақырамыз
       </div>
 
-      <h2 style="margin-top:14px">
-        Кештің<br>
-        Сәттері
-      </h2>
+      <h1>
+        Санжар
+        <span class="amp">&amp;</span>
+        <br>
+        Камила
+      </h1>
 
-      <div class="timeline">
-
-        <div class="event">
-
-          <div class="time">
-            18:00
-          </div>
-
-          <div>
-            <div class="event-title">
-              <span class="event-mark"></span>
-              Беташар
-            </div>
-
-            <p>
-              Ақ босаға аттап, жаңа өмірдің бастауын
-              бірге қарсы аламыз.
-            </p>
-          </div>
-
-        </div>
-
-
-        <div class="event">
-
-          <div class="time">
-            20:00
-          </div>
-
-          <div>
-            <div class="event-title">
-              <span class="event-mark"></span>
-              Тойдың басталуы
-            </div>
-          </div>
-
-        </div>
-
+      <div class="hero-date">
+        25 · ҚЫРКҮЙЕК · 2026
       </div>
 
-
-      <div class="hosts">
-
-        <div class="hosts-label">
-          ТОЙ ИЕЛЕРІ
-        </div>
-
-        <div class="hosts-names">
-          Мұхтар &amp; Жанат
-        </div>
-
+      <div class="hero-place">
+        АРЫС ҚАЛАСЫ · «АСЫЛАЙ» МЕЙРАМХАНАСЫ ·
+        ӘУЕЗОВ КӨШЕСІ, 22
       </div>
 
-    </section>
+    </div>
+
+    <div class="scroll">
+      ТӨМЕН ЖЫЛЖЫТЫҢЫЗ&nbsp; · &nbsp;↓
+    </div>
+
+  </section>
 
 
-    <!-- =========================
-         COUNTDOWN
-    ========================== -->
+  <!-- =========================
+       INVITATION
+       ASSETS/RINGS.JPEG
+  ========================== -->
 
-    <section class="rsvp">
+  <section class="invitation">
+
+    <div class="invitation-bg">
+      <img
+        src="assets/rings.jpeg"
+        alt="Үйлену сақиналары"
+        loading="lazy"
+      >
+    </div>
+
+    <div class="invitation-overlay"></div>
+
+    <span class="decor-flower tl">❧</span>
+    <span class="decor-flower br">❧</span>
+
+    <div class="invitation-content">
 
       <div class="flourish">
         <span class="flourish-heart">♡</span>
       </div>
 
       <h2>
-        Сізді асыға күтеміз
+        Ардақты ағайын,<br>
+        құрметті қонақтар!
       </h2>
 
       <p class="lead">
-        Қуанышымыздың куәсі болып,
-        ақ тілегіңізді білдіруге келіңіз!
+        Сіздерді өміріміздегі ең қуанышты күндердің бірі —
+        шаңырақ көтеру тойымызға шын жүректен шақырамыз.
+        Ақ тілектеріңіз бен ақ ниеттеріңіз біз үшін ең үлкен сый.
       </p>
 
-      <div
-        class="count"
-        id="countdown"
-        aria-label="Тойға дейінгі уақыт"
-      >
-
-        <div>
-          <div class="num" id="d">00</div>
-          <div class="unit">күн</div>
-        </div>
-
-        <div>
-          <div class="num" id="h">00</div>
-          <div class="unit">сағат</div>
-        </div>
-
-        <div>
-          <div class="num" id="m">00</div>
-          <div class="unit">минут</div>
-        </div>
-
-        <div>
-          <div class="num" id="s">00</div>
-          <div class="unit">секунд</div>
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =========================
-         ADDRESS
-    ========================== -->
-
-    <section class="intro">
-
-      <span class="decor-flower tl">❧</span>
-      <span class="decor-flower br">❧</span>
-
-      <div class="flourish">
-        <span class="flourish-heart">♡</span>
-      </div>
-
-      <div class="address">
-
-        <div class="eyebrow">
-          Мекенжай
-        </div>
-
-        <strong>
-          «Асылай» мейрамханасы
-        </strong>
-
-        <p>
-          Арыс қаласы<br>
-          Әуезов көшесі, 22
-        </p>
-
-        <a
-          class="btn map-btn"
-          href="https://2gis.kz/shymkent/geo/70000001080125602/68.802451,42.433645"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          2GIS — Мекенжайды ашу
-        </a>
-
-      </div>
-
-    </section>
-
-
-    <!-- =========================
-         FOOTER
-    ========================== -->
-
-    <footer>
-      САНЖАР &amp; КАМИЛА · 25 ҚЫРКҮЙЕК 2026
-    </footer>
-
-  </main>
-
-
-  <noscript>
-    <div
-      style="
-        max-width:760px;
-        margin:0 auto;
-        padding:16px;
-        background:#f8f4ee;
-        color:#292720;
-        text-align:center;
-      "
-    >
-      Той күні: 25 қыркүйек 2026, 18:00.
     </div>
-  </noscript>
+
+  </section>
 
 
   <!-- =========================
-       COUNTDOWN SCRIPT
+       CALENDAR
   ========================== -->
 
-  <script>
-    const target =
-      new Date("2026-09-25T18:00:00+05:00").getTime();
+  <section class="intro">
 
-    const countdown =
-      document.getElementById("countdown");
+    <div
+      class="calendar-wrap"
+      aria-label="2026 жылғы қыркүйек күнтізбесі"
+    >
 
-    const days =
-      document.getElementById("d");
+      <div class="calendar-head">
 
-    const hours =
-      document.getElementById("h");
+        <div class="calendar-month">
+          Қыркүйек
+        </div>
 
-    const minutes =
-      document.getElementById("m");
+        <div class="calendar-year">
+          2026
+        </div>
 
-    const seconds =
-      document.getElementById("s");
-
-
-    function tick() {
-
-      const left = target - Date.now();
+      </div>
 
 
-      if (left <= 0) {
+      <div class="calendar-week">
 
-        countdown.innerHTML = `
-          <div>
-            <div class="num">♡</div>
-            <div class="unit">Той басталды!</div>
+        <div>Дс</div>
+        <div>Сс</div>
+        <div>Ср</div>
+        <div>Бс</div>
+        <div>Жм</div>
+        <div>Сб</div>
+        <div>Жс</div>
+
+      </div>
+
+
+      <div class="calendar-grid">
+
+        <div class="day empty">0</div>
+        <div class="day">1</div>
+        <div class="day">2</div>
+        <div class="day">3</div>
+        <div class="day">4</div>
+        <div class="day">5</div>
+        <div class="day">6</div>
+
+        <div class="day">7</div>
+        <div class="day">8</div>
+        <div class="day">9</div>
+        <div class="day">10</div>
+        <div class="day">11</div>
+        <div class="day">12</div>
+        <div class="day">13</div>
+
+        <div class="day">14</div>
+        <div class="day">15</div>
+        <div class="day">16</div>
+        <div class="day">17</div>
+        <div class="day">18</div>
+        <div class="day">19</div>
+        <div class="day">20</div>
+
+        <div class="day">21</div>
+        <div class="day">22</div>
+        <div class="day">23</div>
+        <div class="day">24</div>
+
+        <div
+          class="day selected"
+          aria-label="25 қыркүйек 2026"
+        >
+          25
+        </div>
+
+        <div class="day">26</div>
+        <div class="day">27</div>
+
+        <div class="day">28</div>
+        <div class="day">29</div>
+        <div class="day">30</div>
+
+        <div class="day empty">0</div>
+        <div class="day empty">0</div>
+        <div class="day empty">0</div>
+        <div class="day empty">0</div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       PHOTO
+  ========================== -->
+
+  <section class="photo-break">
+
+    <div class="photo-break-copy">
+
+      <span class="eyebrow">
+        25 ҚЫРКҮЙЕК 2026
+      </span>
+
+    </div>
+
+
+    <div class="photo-break-image">
+
+      <img
+        src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=900&q=88"
+        alt="Свадебная фотография"
+        loading="lazy"
+      >
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       EVENING PROGRAM
+  ========================== -->
+
+  <section>
+
+    <span class="decor-flower br">❧</span>
+
+    <div class="eyebrow">
+      Біздің қуанышымыз
+    </div>
+
+    <h2 style="margin-top:14px">
+      Кештің<br>
+      Сәттері
+    </h2>
+
+
+    <div class="timeline">
+
+      <div class="event">
+
+        <div class="time">
+          18:00
+        </div>
+
+        <div>
+
+          <div class="event-title">
+
+            <span class="event-mark"></span>
+
+            Беташар
+
           </div>
-        `;
 
-        return;
-      }
+          <p>
+            Ақ босаға аттап, жаңа өмірдің бастауын
+            бірге қарсы аламыз.
+          </p>
 
+        </div>
 
-      let total =
-        Math.floor(left / 1000);
-
-
-      const d =
-        Math.floor(total / 86400);
-
-      total %= 86400;
+      </div>
 
 
-      const h =
-        Math.floor(total / 3600);
+      <div class="event">
 
-      total %= 3600;
+        <div class="time">
+          20:00
+        </div>
 
+        <div>
 
-      const m =
-        Math.floor(total / 60);
+          <div class="event-title">
 
-      const s =
-        total % 60;
+            <span class="event-mark"></span>
 
+            Тойдың басталуы
 
-      days.textContent =
-        String(d).padStart(2, "0");
+          </div>
 
-      hours.textContent =
-        String(h).padStart(2, "0");
+        </div>
 
-      minutes.textContent =
-        String(m).padStart(2, "0");
+      </div>
 
-      seconds.textContent =
-        String(s).padStart(2, "0");
-    }
+    </div>
 
 
-    tick();
+    <div class="hosts">
 
-    const timer =
-      setInterval(() => {
+      <div class="hosts-label">
+        ТОЙ ИЕЛЕРІ
+      </div>
 
-        tick();
+      <div class="hosts-names">
+        Мұхтар &amp; Жанат
+      </div>
 
-        if (Date.now() >= target) {
-          clearInterval(timer);
-        }
+    </div>
 
-      }, 1000);
-  </script>
+  </section>
+
+
+  <!-- =========================
+       COUNTDOWN
+  ========================== -->
+
+  <section class="rsvp">
+
+    <div class="flourish">
+
+      <span class="flourish-heart">
+        ♡
+      </span>
+
+    </div>
+
+
+    <h2>
+      Сізді асыға күтеміз
+    </h2>
+
+
+    <p class="lead">
+      Қуанышымыздың куәсі болып,
+      ақ тілегіңізді білдіруге келіңіз!
+    </p>
+
+
+    <div
+      class="count"
+      id="countdown"
+      aria-label="Тойға дейінгі уақыт"
+    >
+
+      <div>
+
+        <div
+          class="num"
+          id="d"
+        >
+          00
+        </div>
+
+        <div class="unit">
+          күн
+        </div>
+
+      </div>
+
+
+      <div>
+
+        <div
+          class="num"
+          id="h"
+        >
+          00
+        </div>
+
+        <div class="unit">
+          сағат
+        </div>
+
+      </div>
+
+
+      <div>
+
+        <div
+          class="num"
+          id="m"
+        >
+          00
+        </div>
+
+        <div class="unit">
+          минут
+        </div>
+
+      </div>
+
+
+      <div>
+
+        <div
+          class="num"
+          id="s"
+        >
+          00
+        </div>
+
+        <div class="unit">
+          секунд
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       ADDRESS
+       ASSETS/ASL.JPEG
+  ========================== -->
+
+  <section class="address-section">
+
+    <!-- Фото ресторана -->
+
+    <div class="address-bg">
+
+      <img
+        src="assets/asl.jpeg"
+        alt="«Асылай» мейрамханасы"
+        loading="lazy"
+      >
+
+    </div>
+
+
+    <!-- Затемнение фотографии -->
+
+    <div class="address-overlay"></div>
+
+
+    <!-- Декоративная рамка -->
+
+    <span class="decor-flower tl">
+      ❧
+    </span>
+
+    <span class="decor-flower br">
+      ❧
+    </span>
+
+
+    <!-- Текстовая карточка -->
+
+    <div class="address-content">
+
+      <div class="flourish">
+
+        <span class="flourish-heart">
+          ♡
+        </span>
+
+      </div>
+
+
+      <div class="eyebrow">
+        МЕКЕНЖАЙ
+      </div>
+
+
+      <h2>
+        «Асылай»<br>
+        мейрамханасы
+      </h2>
+
+
+      <p class="address-city">
+        Арыс қаласы<br>
+        Әуезов көшесі, 22
+      </p>
+
+
+      <a
+        class="btn map-btn"
+        href="https://2gis.kz/shymkent/geo/70000001080125602/68.802451,42.433645"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        2GIS — МЕКЕНЖАЙДЫ АШУ
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       FOOTER
+  ========================== -->
+
+  <footer>
+    САНЖАР &amp; КАМИЛА · 25 ҚЫРКҮЙЕК 2026
+  </footer>
+
+</main>
+
+
+<!-- =========================
+     COUNTDOWN SCRIPT
+========================== -->
+
+<script>
+
+  const target =
+    new Date("2026-09-25T18:00:00+05:00").getTime();
+
+
+  function tick() {
+
+    let left = Math.max(
+      0,
+      target - Date.now()
+    );
+
+
+    let total =
+      Math.floor(left / 1000);
+
+
+    const d =
+      Math.floor(total / 86400);
+
+    total %= 86400;
+
+
+    const h =
+      Math.floor(total / 3600);
+
+    total %= 3600;
+
+
+    const m =
+      Math.floor(total / 60);
+
+
+    const s =
+      total % 60;
+
+
+    document.getElementById("d").textContent =
+      String(d).padStart(2, "0");
+
+
+    document.getElementById("h").textContent =
+      String(h).padStart(2, "0");
+
+
+    document.getElementById("m").textContent =
+      String(m).padStart(2, "0");
+
+
+    document.getElementById("s").textContent =
+      String(s).padStart(2, "0");
+
+  }
+
+
+  tick();
+
+  setInterval(tick, 1000);
+
+</script>
+
 
 </body>
 </html>
