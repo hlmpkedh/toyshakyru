@@ -230,9 +230,9 @@
       background:
         linear-gradient(
           180deg,
-          rgba(248, 244, 238, .22),
-          rgba(248, 244, 238, .48) 48%,
-          rgba(248, 244, 238, .78) 100%
+          rgba(248, 244, 238, .38),
+          rgba(248, 244, 238, .58) 48%,
+          rgba(248, 244, 238, .84) 100%
         );
     }
 
@@ -532,56 +532,96 @@
     ========================== */
 
     .timeline {
-      max-width: 570px;
-      margin: 42px auto 0;
-
-      border-top: 1px solid var(--line);
+      max-width: 480px;
+      margin: 50px auto 0;
 
       animation: reveal 1s ease both;
     }
 
     .event {
       display: grid;
-      grid-template-columns: 95px 1fr;
+      grid-template-columns: 110px 40px 1fr;
 
-      gap: 22px;
+      align-items: start;
 
-      padding: 25px 0;
+      column-gap: 4px;
+    }
 
-      border-bottom: 1px solid var(--line);
+    .event:not(:last-child) {
+      padding-bottom: 6px;
     }
 
     .time {
       font-family: "Cormorant Garamond", serif;
-      font-size: 38px;
+      font-size: 40px;
+      line-height: 1;
       color: var(--gold);
-      font-weight: 500;
+      font-weight: 600;
+      letter-spacing: -.01em;
+
+      padding-top: 4px;
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    .event-rail {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      height: 100%;
+    }
+
+    .event-dot {
+      width: 15px;
+      height: 15px;
+      flex: 0 0 auto;
+
+      margin-top: 9px;
+
+      border: 2px solid var(--gold);
+      border-radius: 50%;
+
+      background: var(--paper);
+
+      box-shadow: 0 0 0 4px var(--paper), 0 3px 8px rgba(160, 124, 84, .25);
+    }
+
+    .event-line {
+      width: 1px;
+      flex: 1 1 auto;
+
+      margin: 4px 0;
+
+      background:
+        repeating-linear-gradient(
+          180deg,
+          var(--line) 0 5px,
+          transparent 5px 10px
+        );
+    }
+
+    .event:last-child .event-line {
+      display: none;
+    }
+
+    .event-body {
+      padding-bottom: 34px;
     }
 
     .event-title {
-      font-size: 14px;
-      font-weight: 600;
-      margin-bottom: 6px;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: .01em;
+      margin: 2px 0 6px;
     }
 
     .event p {
       color: var(--muted);
-      font-size: 12px;
+      font-size: 13px;
       margin: 0;
       line-height: 1.7;
-    }
-
-    .event-mark {
-      width: 7px;
-      height: 7px;
-
-      border: 1px solid var(--gold);
-
-      transform: rotate(45deg);
-
-      display: inline-block;
-
-      margin-right: 9px;
+      max-width: 34ch;
     }
 
     /* =========================
@@ -953,17 +993,20 @@
 
       /* Timeline */
 
+      .timeline {
+        max-width: 100%;
+      }
+
       .event {
-        grid-template-columns: 78px 1fr;
-        gap: 15px;
+        grid-template-columns: 82px 32px 1fr;
       }
 
       .time {
-        font-size: 34px;
+        font-size: 32px;
       }
 
       .event-title {
-        font-size: 16px;
+        font-size: 17px;
       }
 
       .event p {
@@ -1094,11 +1137,372 @@
         transition-duration: .01ms !important;
       }
     }
+
+    /* =========================
+       ENVELOPE SCREEN
+    ========================== */
+
+    .envelope-screen {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      background: #ded8cf;
+
+      transition: opacity .7s ease, visibility .7s ease;
+    }
+
+    .envelope-screen.is-hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .envelope {
+      position: relative;
+      width: min(86vw, 380px);
+      aspect-ratio: 3 / 2;
+
+      cursor: pointer;
+      user-select: none;
+
+      transition: transform .6s cubic-bezier(.4, 0, .2, 1);
+    }
+
+    .envelope.is-opening {
+      animation: envelopeLift .9s cubic-bezier(.5, 0, .3, 1) forwards;
+    }
+
+    @keyframes envelopeLift {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+      }
+
+      55% {
+        transform: translateY(-18px) scale(1.03);
+        opacity: 1;
+      }
+
+      100% {
+        transform: translateY(-60px) scale(1.08);
+        opacity: 0;
+      }
+    }
+
+    .envelope-body {
+      position: absolute;
+      inset: 0;
+
+      background: var(--paper);
+      border: 1px solid var(--line);
+
+      box-shadow: 0 25px 60px rgba(40, 34, 27, .18);
+    }
+
+    .envelope-flap {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+
+      height: 62%;
+
+      background: var(--paper2);
+
+      clip-path: polygon(0 0, 100% 0, 50% 78%);
+
+      border-bottom: 1px solid rgba(160, 124, 84, .3);
+
+      transform-origin: top center;
+      transition: transform .7s cubic-bezier(.6, 0, .3, 1);
+
+      z-index: 3;
+    }
+
+    .envelope.is-open .envelope-flap {
+      transform: rotateX(180deg);
+    }
+
+    .envelope-inner {
+      position: absolute;
+      inset: 10px;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+
+      gap: 10px;
+
+      background: var(--white);
+      border: 1px solid var(--line);
+
+      z-index: 1;
+    }
+
+    .envelope-eyebrow {
+      font-size: 11px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .envelope-title {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(26px, 6vw, 36px);
+      line-height: 1.1;
+      color: var(--ink);
+    }
+
+    .envelope-date {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 17px;
+      letter-spacing: .1em;
+      color: var(--gold);
+    }
+
+    .envelope-seal {
+      position: absolute;
+      left: 50%;
+      top: 55%;
+
+      width: 62px;
+      height: 62px;
+
+      transform: translate(-50%, -50%);
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 50%;
+
+      background: var(--gold);
+      color: #fffaf2;
+
+      font-family: "Cormorant Garamond", serif;
+      font-size: 12px;
+      letter-spacing: .1em;
+
+      box-shadow: 0 8px 20px rgba(160, 124, 84, .35);
+
+      z-index: 4;
+
+      animation: sealPulse 2.2s ease-in-out infinite;
+    }
+
+    @keyframes sealPulse {
+      0%, 100% {
+        box-shadow: 0 8px 20px rgba(160, 124, 84, .35);
+      }
+
+      50% {
+        box-shadow: 0 8px 26px rgba(160, 124, 84, .55), 0 0 0 8px rgba(160, 124, 84, .12);
+      }
+    }
+
+    .envelope-hint {
+      position: absolute;
+      bottom: -46px;
+      left: 50%;
+      transform: translateX(-50%);
+
+      font-size: 11px;
+      letter-spacing: .1em;
+      color: var(--muted);
+      text-align: center;
+      white-space: nowrap;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .envelope-hint-arrow {
+      font-size: 20px;
+      color: var(--gold);
+      animation: hintBounce 1.6s ease-in-out infinite;
+    }
+
+    @keyframes hintBounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(6px);
+      }
+    }
+
+    /* =========================
+       TOP CONTROLS (music + lang)
+    ========================== */
+
+    .top-controls {
+      position: fixed;
+      top: 16px;
+      right: 16px;
+      z-index: 200;
+
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      opacity: 0;
+      transform: translateY(-8px);
+      pointer-events: none;
+
+      transition: opacity .5s ease, transform .5s ease;
+    }
+
+    .top-controls.is-visible {
+      opacity: 1;
+      transform: none;
+      pointer-events: auto;
+    }
+
+    .music-btn,
+    .lang-btn {
+      width: 40px;
+      height: 40px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border: 1px solid rgba(216, 203, 187, .9);
+      border-radius: 50%;
+
+      background: rgba(248, 244, 238, .92);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+
+      color: var(--ink);
+      cursor: pointer;
+
+      font-size: 15px;
+
+      box-shadow: 0 6px 18px rgba(40, 34, 27, .12);
+      transition: transform .2s ease, background .2s ease;
+    }
+
+    .music-btn:hover,
+    .lang-btn:hover {
+      transform: translateY(-1px);
+      background: #fff;
+    }
+
+    .lang-btn {
+      width: auto;
+      padding: 0 14px;
+      border-radius: 20px;
+      font-size: 11px;
+      letter-spacing: .08em;
+      font-weight: 600;
+    }
+
+    .music-btn .icon-muted {
+      display: none;
+    }
+
+    .music-btn.is-muted .icon-on {
+      display: none;
+    }
+
+    .music-btn.is-muted .icon-muted {
+      display: inline;
+    }
+
+    @media (max-width: 520px) {
+
+      .envelope-hint {
+        bottom: -42px;
+        font-size: 10px;
+      }
+
+      .top-controls {
+        top: 12px;
+        right: 12px;
+      }
+    }
   </style>
 
 </head>
 
 <body>
+
+<!-- =========================
+     ENVELOPE INTRO SCREEN
+========================== -->
+
+<div class="envelope-screen" id="envelopeScreen">
+
+  <div
+    class="envelope"
+    id="envelope"
+    role="button"
+    tabindex="0"
+    aria-label="Конвертті ашу үшін басыңыз"
+  >
+
+    <div class="envelope-body">
+
+      <div class="envelope-inner">
+        <div class="envelope-eyebrow" data-i18n="env_eyebrow">Тойға шақыру</div>
+        <div class="envelope-title" data-i18n="env_title">Санжар &amp; Камила</div>
+        <div class="envelope-date" data-i18n="env_date">25 қыркүйек 2026</div>
+      </div>
+
+      <div class="envelope-flap"></div>
+
+      <div class="envelope-seal" data-i18n="env_seal">АШУ</div>
+
+    </div>
+
+    <div class="envelope-hint">
+      <span data-i18n="env_hint">АШУ түймесін басыңыз</span>
+      <span class="envelope-hint-arrow">☝</span>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- =========================
+     TOP CONTROLS
+========================== -->
+
+<div class="top-controls" id="topControls">
+
+  <button
+    class="music-btn"
+    id="musicBtn"
+    type="button"
+    aria-label="Музыканы қосу/өшіру"
+  >
+    <span class="icon-on">🔊</span>
+    <span class="icon-muted">🔇</span>
+  </button>
+
+  <button
+    class="lang-btn"
+    id="langBtn"
+    type="button"
+    aria-label="Тілді ауыстыру"
+  >
+    RU
+  </button>
+
+</div>
+
+<audio id="bgMusic" src="assets/music.mp3" loop preload="none"></audio>
 
 <main class="page">
 
@@ -1110,7 +1514,7 @@
 
     <div class="hero-bg">
       <img
-        src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1600&q=88"
+        src="assets/rings.jpeg"
         alt="Романтикалық үйлену тойының көрінісі"
       >
     </div>
@@ -1119,7 +1523,7 @@
 
     <div class="hero-content">
 
-      <div class="eyebrow">
+      <div class="eyebrow" data-i18n="hero_eyebrow">
         Тойымызға ақ ниетпен шақырамыз
       </div>
 
@@ -1130,18 +1534,18 @@
         Камила
       </h1>
 
-      <div class="hero-date">
+      <div class="hero-date" data-i18n="hero_date">
         25 · ҚЫРКҮЙЕК · 2026
       </div>
 
-      <div class="hero-place">
+      <div class="hero-place" data-i18n="hero_place">
         АРЫС ҚАЛАСЫ · «АСЫЛАЙ» МЕЙРАМХАНАСЫ ·
         ӘУЕЗОВ КӨШЕСІ, 22
       </div>
 
     </div>
 
-    <div class="scroll">
+    <div class="scroll" data-i18n="hero_scroll">
       ТӨМЕН ЖЫЛЖЫТЫҢЫЗ&nbsp; · &nbsp;↓
     </div>
 
@@ -1156,8 +1560,8 @@
 
     <div class="invitation-bg">
       <img
-        src="assets/rings.jpeg"
-        alt="Үйлену сақиналары"
+        src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1600&q=88"
+        alt="Үйлену тойы"
         loading="lazy"
       >
     </div>
@@ -1173,12 +1577,12 @@
         <span class="flourish-heart">♡</span>
       </div>
 
-      <h2>
+      <h2 data-i18n="invite_title">
         Ардақты ағайын,<br>
         құрметті қонақтар!
       </h2>
 
-      <p class="lead">
+      <p class="lead" data-i18n="invite_lead">
         Сіздерді өміріміздегі ең қуанышты күндердің бірі —
         шаңырақ көтеру тойымызға шын жүректен шақырамыз.
         Ақ тілектеріңіз бен ақ ниеттеріңіз біз үшін ең үлкен сый.
@@ -1211,7 +1615,7 @@
       <div class="calendar-overlay"></div>
 
       <div class="calendar-head">
-        <div class="calendar-month">Қыркүйек</div>
+        <div class="calendar-month" data-i18n="cal_month">Қыркүйек</div>
         <div class="calendar-year">2026</div>
       </div>
 
@@ -1289,11 +1693,11 @@
 
     <span class="decor-flower br">❧</span>
 
-    <div class="eyebrow">
+    <div class="eyebrow" data-i18n="program_eyebrow">
       Біздің қуанышымыз
     </div>
 
-    <h2 style="margin-top:14px">
+    <h2 style="margin-top:14px" data-i18n="program_title">
       Кештің<br>
       Сәттері
     </h2>
@@ -1302,12 +1706,13 @@
 
       <div class="event">
         <div class="time">18:00</div>
-        <div>
-          <div class="event-title">
-            <span class="event-mark"></span>
-            Беташар
-          </div>
-          <p>
+        <div class="event-rail">
+          <div class="event-dot"></div>
+          <div class="event-line"></div>
+        </div>
+        <div class="event-body">
+          <div class="event-title" data-i18n="event1_title">Беташар</div>
+          <p data-i18n="event1_desc">
             Ақ босаға аттап, жаңа өмірдің бастауын
             бірге қарсы аламыз.
           </p>
@@ -1316,18 +1721,19 @@
 
       <div class="event">
         <div class="time">20:00</div>
-        <div>
-          <div class="event-title">
-            <span class="event-mark"></span>
-            Тойдың басталуы
-          </div>
+        <div class="event-rail">
+          <div class="event-dot"></div>
+          <div class="event-line"></div>
+        </div>
+        <div class="event-body">
+          <div class="event-title" data-i18n="event2_title">Тойдың басталуы</div>
         </div>
       </div>
 
     </div>
 
     <div class="hosts">
-      <div class="hosts-label">ТОЙ ИЕЛЕРІ</div>
+      <div class="hosts-label" data-i18n="hosts_label">ТОЙ ИЕЛЕРІ</div>
       <div class="hosts-names">Мұхтар &amp; Жанат</div>
     </div>
 
@@ -1343,9 +1749,9 @@
       <span class="flourish-heart">♡</span>
     </div>
 
-    <h2>Сізді асыға күтеміз</h2>
+    <h2 data-i18n="rsvp_title">Сізді асыға күтеміз</h2>
 
-    <p class="lead">
+    <p class="lead" data-i18n="rsvp_lead">
       Қуанышымыздың куәсі болып,
       ақ тілегіңізді білдіруге келіңіз!
     </p>
@@ -1358,22 +1764,22 @@
 
       <div>
         <div class="num" id="d">00</div>
-        <div class="unit">күн</div>
+        <div class="unit" data-i18n="unit_days">күн</div>
       </div>
 
       <div>
         <div class="num" id="h">00</div>
-        <div class="unit">сағат</div>
+        <div class="unit" data-i18n="unit_hours">сағат</div>
       </div>
 
       <div>
         <div class="num" id="m">00</div>
-        <div class="unit">минут</div>
+        <div class="unit" data-i18n="unit_minutes">минут</div>
       </div>
 
       <div>
         <div class="num" id="s">00</div>
-        <div class="unit">секунд</div>
+        <div class="unit" data-i18n="unit_seconds">секунд</div>
       </div>
 
     </div>
@@ -1406,14 +1812,14 @@
         <span class="flourish-heart">♡</span>
       </div>
 
-      <div class="eyebrow">МЕКЕНЖАЙ</div>
+      <div class="eyebrow" data-i18n="addr_eyebrow">МЕКЕНЖАЙ</div>
 
-      <h2>
+      <h2 data-i18n="addr_title">
         «Асылай»<br>
         мейрамханасы
       </h2>
 
-      <p class="address-city">
+      <p class="address-city" data-i18n="addr_city">
         Арыс қаласы<br>
         Әуезов көшесі, 22
       </p>
@@ -1423,6 +1829,7 @@
         href="https://2gis.kz/shymkent/geo/70000001080125602/68.802451,42.433645"
         target="_blank"
         rel="noopener noreferrer"
+        data-i18n="addr_btn"
       >
         2GIS — МЕКЕНЖАЙДЫ АШУ
       </a>
@@ -1435,7 +1842,7 @@
        FOOTER
   ========================== -->
 
-  <footer>
+  <footer data-i18n="footer_text">
     САНЖАР &amp; КАМИЛА · 25 ҚЫРКҮЙЕК 2026
   </footer>
 
@@ -1473,6 +1880,165 @@
 
   tick();
   setInterval(tick, 1000);
+
+  /* =========================
+     I18N (KK / RU)
+  ========================== */
+
+  const translations = {
+    kk: {
+      env_eyebrow: "Тойға шақыру",
+      env_title: "Санжар & Камила",
+      env_date: "25 қыркүйек 2026",
+      env_seal: "АШУ",
+      env_hint: "АШУ түймесін басыңыз",
+      hero_eyebrow: "Тойымызға ақ ниетпен шақырамыз",
+      hero_date: "25 · ҚЫРКҮЙЕК · 2026",
+      hero_place: "АРЫС ҚАЛАСЫ · «АСЫЛАЙ» МЕЙРАМХАНАСЫ · ӘУЕЗОВ КӨШЕСІ, 22",
+      hero_scroll: "ТӨМЕН ЖЫЛЖЫТЫҢЫЗ  ·  ↓",
+      invite_title: "Ардақты ағайын,<br>құрметті қонақтар!",
+      invite_lead: "Сіздерді өміріміздегі ең қуанышты күндердің бірі — шаңырақ көтеру тойымызға шын жүректен шақырамыз. Ақ тілектеріңіз бен ақ ниеттеріңіз біз үшін ең үлкен сый.",
+      cal_month: "Қыркүйек",
+      program_eyebrow: "Біздің қуанышымыз",
+      program_title: "Кештің<br>Сәттері",
+      event1_title: "Беташар",
+      event1_desc: "Ақ босаға аттап, жаңа өмірдің бастауын бірге қарсы аламыз.",
+      event2_title: "Тойдың басталуы",
+      hosts_label: "ТОЙ ИЕЛЕРІ",
+      rsvp_title: "Сізді асыға күтеміз",
+      rsvp_lead: "Қуанышымыздың куәсі болып, ақ тілегіңізді білдіруге келіңіз!",
+      unit_days: "күн",
+      unit_hours: "сағат",
+      unit_minutes: "минут",
+      unit_seconds: "секунд",
+      addr_eyebrow: "МЕКЕНЖАЙ",
+      addr_title: "«Асылай»<br>мейрамханасы",
+      addr_city: "Арыс қаласы<br>Әуезов көшесі, 22",
+      addr_btn: "2GIS — МЕКЕНЖАЙДЫ АШУ",
+      footer_text: "САНЖАР & КАМИЛА · 25 ҚЫРКҮЙЕК 2026"
+    },
+    ru: {
+      env_eyebrow: "Приглашение на свадьбу",
+      env_title: "Санжар & Камила",
+      env_date: "25 сентября 2026",
+      env_seal: "ОТКРЫТЬ",
+      env_hint: "Нажмите «ОТКРЫТЬ»",
+      hero_eyebrow: "С искренней радостью приглашаем на нашу свадьбу",
+      hero_date: "25 · СЕНТЯБРЯ · 2026",
+      hero_place: "ГОРОД АРЫСЬ · РЕСТОРАН «АСЫЛАЙ» · УЛ. АУЭЗОВА, 22",
+      hero_scroll: "ЛИСТАЙТЕ ВНИЗ  ·  ↓",
+      invite_title: "Дорогие родные,<br>уважаемые гости!",
+      invite_lead: "Приглашаем вас разделить с нами один из самых счастливых дней нашей жизни. Ваши добрые пожелания — самый ценный подарок для нас.",
+      cal_month: "Сентябрь",
+      program_eyebrow: "Наша радость",
+      program_title: "Моменты<br>Вечера",
+      event1_title: "Беташар",
+      event1_desc: "Переступая порог, вместе встречаем начало новой жизни.",
+      event2_title: "Начало торжества",
+      hosts_label: "ОРГАНИЗАТОРЫ",
+      rsvp_title: "Ждём вас с нетерпением",
+      rsvp_lead: "Приходите разделить нашу радость и подарить нам добрые пожелания!",
+      unit_days: "дней",
+      unit_hours: "часов",
+      unit_minutes: "минут",
+      unit_seconds: "секунд",
+      addr_eyebrow: "АДРЕС",
+      addr_title: "Ресторан<br>«Асылай»",
+      addr_city: "Город Арысь<br>ул. Ауэзова, 22",
+      addr_btn: "2GIS — ОТКРЫТЬ АДРЕС",
+      footer_text: "САНЖАР & КАМИЛА · 25 СЕНТЯБРЯ 2026"
+    }
+  };
+
+  let currentLang = "kk";
+
+  function applyLang(lang) {
+    currentLang = lang;
+    const dict = translations[lang];
+
+    document.querySelectorAll("[data-i18n]").forEach((el) => {
+      const key = el.getAttribute("data-i18n");
+      if (dict[key] !== undefined) {
+        el.innerHTML = dict[key];
+      }
+    });
+
+    document.documentElement.lang = lang;
+
+    const langBtn = document.getElementById("langBtn");
+    if (langBtn) {
+      langBtn.textContent = lang === "kk" ? "RU" : "KZ";
+    }
+  }
+
+  document.getElementById("langBtn").addEventListener("click", () => {
+    applyLang(currentLang === "kk" ? "ru" : "kk");
+  });
+
+  /* =========================
+     ENVELOPE INTRO
+  ========================== */
+
+  const envelopeScreen = document.getElementById("envelopeScreen");
+  const envelope = document.getElementById("envelope");
+  const topControls = document.getElementById("topControls");
+  const bgMusic = document.getElementById("bgMusic");
+  const musicBtn = document.getElementById("musicBtn");
+
+  let opened = false;
+
+  function openEnvelope() {
+    if (opened) return;
+    opened = true;
+
+    envelope.classList.add("is-open");
+
+    // Try to start music right on the user gesture (required by browsers)
+    bgMusic.volume = 0.55;
+    bgMusic.play().catch(() => {
+      // Autoplay might still be blocked; user can use the music button.
+      musicBtn.classList.add("is-muted");
+    });
+
+    setTimeout(() => {
+      envelope.classList.add("is-opening");
+    }, 550);
+
+    setTimeout(() => {
+      envelopeScreen.classList.add("is-hidden");
+      topControls.classList.add("is-visible");
+      document.body.style.overflow = "";
+    }, 550 + 900);
+  }
+
+  envelope.addEventListener("click", openEnvelope);
+  envelope.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      openEnvelope();
+    }
+  });
+
+  // Prevent scrolling the page behind the envelope
+  document.body.style.overflow = "hidden";
+
+  musicBtn.addEventListener("click", () => {
+    if (bgMusic.paused) {
+      bgMusic.play().catch(() => {});
+      musicBtn.classList.remove("is-muted");
+    } else {
+      bgMusic.pause();
+      musicBtn.classList.add("is-muted");
+    }
+  });
+
+  bgMusic.addEventListener("pause", () => {
+    musicBtn.classList.add("is-muted");
+  });
+
+  bgMusic.addEventListener("play", () => {
+    musicBtn.classList.remove("is-muted");
+  });
 </script>
 
 </body>
