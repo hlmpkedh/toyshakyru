@@ -64,7 +64,7 @@
     }
 
     html {
-      scroll-behavior: smooth;
+      scroll-behavior: auto;
     }
 
     body {
@@ -2174,28 +2174,30 @@
     setTimeout(() => {
       envelopeScreen.classList.add("is-hidden");
       topControls.classList.add("is-visible");
-      document.body.style.overflow = "";
+      document.body.style.overflow = "";      // ЗАДЕРЖКА перед стартом автоскролла (в миллисекундах)
+      const SCROLL_START_DELAY = 2000;
 
-
-
+      // СКОРОСТЬ автоскролла: длительность = distance * SCROLL_SPEED_FACTOR,
+      // но не короче SCROLL_MIN_DURATION и не длиннее SCROLL_MAX_DURATION.
+      // Чем БОЛЬШЕ SCROLL_SPEED_FACTOR — тем МЕДЛЕННЕЕ скролл.
+      const SCROLL_SPEED_FACTOR = 14;
+      const SCROLL_MIN_DURATION = 6000;
+      const SCROLL_MAX_DURATION = 26000;
 
       setTimeout(() => {
-
-
         const targetY = document.body.scrollHeight - window.innerHeight;
         const distance = targetY - window.scrollY;
 
-
-
         if (distance < 40) return;
 
-
-        const duration = Math.max(33000, Math.min(33000, distance * 33));
+        const duration = Math.max(
+          SCROLL_MIN_DURATION,
+          Math.min(SCROLL_MAX_DURATION, distance * SCROLL_SPEED_FACTOR)
+        );
         smoothScrollTo(targetY, duration);
-      }, 1500);
+      }, SCROLL_START_DELAY);
     }, 550 + 900);
   }
-
 
   let autoScrollActive = false;
 
@@ -2205,7 +2207,7 @@
     const startTime = performance.now();
     autoScrollActive = true;
 
-
+    // Плавный easing "в оба конца" — мягкий разгон и мягкое торможение
     function easeInOutSine(t) {
       return -(Math.cos(Math.PI * t) - 1) / 2;
     }
