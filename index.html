@@ -120,14 +120,33 @@
       font-size: 18px;
     }
 
-    /* Invitation title is longer than other h2s on the page
-       (a full list of relations/guests), so it gets its own,
-       slightly smaller, more measured sizing to stay balanced
-       inside the card on both desktop and mobile. */
+    /* Invitation title: a short elegant lead word ("Құрметті") in the
+       page's display serif, followed by the longer list of relations
+       set smaller and lighter so it reads as a gracious aside rather
+       than competing with the lead word for attention. */
     .invite-title {
-      font-size: clamp(30px, 6.4vw, 42px);
-      line-height: 1.22;
-      letter-spacing: .002em;
+      margin: 0 0 22px;
+    }
+
+    .invite-title-lead {
+      display: block;
+      font-family: "Cormorant Garamond", serif;
+      font-weight: 600;
+      font-style: italic;
+      font-size: clamp(38px, 8vw, 52px);
+      line-height: 1;
+      color: var(--ink);
+      margin-bottom: 10px;
+    }
+
+    .invite-title-list {
+      display: block;
+      font-family: "Cormorant Garamond", serif;
+      font-weight: 600;
+      font-size: clamp(19px, 3.6vw, 24px);
+      line-height: 1.5;
+      color: #3c3833;
+      letter-spacing: .01em;
     }
 
     .flourish {
@@ -1730,11 +1749,10 @@
         <span class="flourish-heart">♡</span>
       </div>
 
-      <h2 class="invite-title" data-i18n="invite_title">
-        Құрметті ағайын-туыс, бауырлар,<br>
-        құда-жекжат, нағашы-жиен, бөлелер,<br>
-        әріптестер, дос-жарандар мен көршілер!
-      </h2>
+      <div class="invite-title">
+        <span class="invite-title-lead" data-i18n="invite_title_lead">Құрметті</span>
+        <span class="invite-title-list" data-i18n="invite_title_list">ағайын-туыс, бауырлар, құда-жекжат,<br>нағашы-жиен, бөлелер, әріптестер,<br>дос-жарандар мен көршілер!</span>
+      </div>
 
       <p class="lead" data-i18n="invite_lead">
         Сіздерді өміріміздегі ең қуанышты күндердің бірі —
@@ -2086,7 +2104,8 @@
       hero_date: "25 · ҚЫРКҮЙЕК · 2026",
       hero_place: "АРЫС ҚАЛАСЫ · «АСЫЛАЙ» МЕЙРАМХАНАСЫ · ӘУЕЗОВ КӨШЕСІ, 22",
       hero_scroll: "ТӨМЕН ЖЫЛЖЫТЫҢЫЗ  ·  ↓",
-      invite_title: "Құрметті ағайын-туыс, бауырлар,<br>құда-жекжат, нағашы-жиен, бөлелер,<br>әріптестер, дос-жарандар мен көршілер!",
+      invite_title_lead: "Құрметті",
+      invite_title_list: "ағайын-туыс, бауырлар, құда-жекжат,<br>нағашы-жиен, бөлелер, әріптестер,<br>дос-жарандар мен көршілер!",
       invite_lead: "Сіздерді өміріміздегі ең қуанышты күндердің бірі — шаңырақ көтеру тойымызға шын жүректен шақырамыз. Ақ тілектеріңіз бен ақ ниеттеріңіз біз үшін ең үлкен сый.",
       cal_month: "Қыркүйек",
       program_eyebrow: "Біздің қуанышымыз",
@@ -2117,7 +2136,8 @@
       hero_date: "25 · СЕНТЯБРЯ · 2026",
       hero_place: "ГОРОД АРЫСЬ · РЕСТОРАН «АСЫЛАЙ» · УЛ. АУЭЗОВА, 22",
       hero_scroll: "ЛИСТАЙТЕ ВНИЗ  ·  ↓",
-      invite_title: "Дорогие родные,<br>уважаемые гости!",
+      invite_title_lead: "Дорогие",
+      invite_title_list: "родные, братья и сёстры, сваты,<br>дяди, тёти, племянники,<br>коллеги, друзья и соседи!",
       invite_lead: "Приглашаем вас разделить с нами один из самых счастливых дней нашей жизни. Ваши добрые пожелания — самый ценный подарок для нас.",
       cal_month: "Сентябрь",
       program_eyebrow: "Наша радость",
