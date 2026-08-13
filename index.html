@@ -2177,15 +2177,12 @@
     setTimeout(() => {
       envelopeScreen.classList.add("is-hidden");
       topControls.classList.add("is-visible");
-      document.body.style.overflow = "";      // ЗАДЕРЖКА перед стартом автоскролла (в миллисекундах)
-      const SCROLL_START_DELAY = 2000;
+      document.body.style.overflow = "";
+      const SCROLL_START_DELAY = 997;
 
-      // СКОРОСТЬ автоскролла: длительность = distance * SCROLL_SPEED_FACTOR,
-      // но не короче SCROLL_MIN_DURATION и не длиннее SCROLL_MAX_DURATION.
-      // Чем БОЛЬШЕ SCROLL_SPEED_FACTOR — тем МЕДЛЕННЕЕ скролл.
-      const SCROLL_SPEED_FACTOR = 14;
-      const SCROLL_MIN_DURATION = 6000;
-      const SCROLL_MAX_DURATION = 26000;
+      const SCROLL_SPEED_FACTOR = 40;
+      const SCROLL_MIN_DURATION = 40000;
+      const SCROLL_MAX_DURATION = 56000;
 
       setTimeout(() => {
         const targetY = document.body.scrollHeight - window.innerHeight;
