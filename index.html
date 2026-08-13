@@ -12,7 +12,7 @@
 
   <title>Санжар & Камила — Тойға шақыру</title>
 
-  <!-- Open Graph / WhatsApp / Telegram / Facebook preview -->
+
   <meta property="og:type" content="website">
   <meta property="og:title" content="Санжар & Камила — Тойға шақыру">
   <meta
@@ -26,7 +26,7 @@
   <meta property="og:site_name" content="Санжар & Камила — Тойға шақыру">
   <meta property="og:locale" content="kk_KZ">
 
-  <!-- Twitter Card (also used as fallback by some apps) -->
+
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Санжар & Камила — Тойға шақыру">
   <meta
@@ -84,9 +84,7 @@
       box-shadow: 0 0 60px rgba(0, 0, 0, .08);
     }
 
-    /* =========================
-       GENERAL
-    ========================== */
+
 
     section {
       padding: 88px 30px;
@@ -120,10 +118,7 @@
       font-size: 18px;
     }
 
-    /* Invitation title: a short elegant lead word ("Құрметті") in the
-       page's display serif, followed by the longer list of relations
-       set smaller and lighter so it reads as a gracious aside rather
-       than competing with the lead word for attention. */
+
     .invite-title {
       margin: 0 0 22px;
     }
@@ -228,9 +223,7 @@
       transform: rotate(162deg);
     }
 
-    /* =========================
-       HERO
-    ========================== */
+
 
     .hero {
       min-height: 100vh;
@@ -347,9 +340,7 @@
       animation: fadePulse 2.8s ease-in-out infinite;
     }
 
-    /* =========================
-       INVITATION / RINGS
-    ========================== */
+
 
     .invitation {
       min-height: 650px;
@@ -422,10 +413,7 @@
       font-weight: 500;
     }
 
-    /* =========================
-       CALENDAR
-       BACKGROUND = WEDDING PHOTO
-    ========================== */
+
 
     .calendar-section {
       padding-top: 70px;
@@ -574,17 +562,13 @@
       opacity: .45;
     }
 
-    /* =========================
-       EVENING PROGRAM SECTION
-    ========================== */
+
 
     section.program {
       padding-top: 90px;
     }
 
-    /* =========================
-       TIMELINE
-    ========================== */
+
 
     .timeline {
       max-width: 480px;
@@ -679,9 +663,7 @@
       max-width: 34ch;
     }
 
-    /* =========================
-       HOSTS
-    ========================== */
+
 
     .hosts {
       margin-top: 46px;
@@ -713,9 +695,7 @@
       margin-top: 8px;
     }
 
-    /* =========================
-       RSVP / COUNTDOWN
-    ========================== */
+
 
     .rsvp {
       background: var(--dark);
@@ -759,10 +739,7 @@
       text-transform: uppercase;
     }
 
-    /* =========================
-       ADDRESS
-       RESTAURANT PHOTO
-    ========================== */
+
 
     .address-section {
       min-height: 650px;
@@ -880,9 +857,7 @@
         0 2px 10px rgba(0, 0, 0, .35);
     }
 
-    /* =========================
-       BUTTON
-    ========================== */
+
 
     .btn {
       display: inline-flex;
@@ -929,9 +904,7 @@
       color: var(--dark);
     }
 
-    /* =========================
-       FOOTER
-    ========================== */
+
 
     footer {
       text-align: center;
@@ -947,9 +920,7 @@
       background: var(--paper);
     }
 
-    /* =========================
-       MOBILE
-    ========================== */
+
 
     @media (max-width: 520px) {
 
@@ -1001,7 +972,7 @@
         font-size: 9px;
       }
 
-      /* Invitation */
+
 
       .invitation {
         min-height: 650px;
@@ -1021,7 +992,7 @@
         line-height: 1.8;
       }
 
-      /* Calendar */
+
 
       .calendar-section {
         padding: 60px 18px 75px;
@@ -1040,13 +1011,13 @@
         font-size: 21px;
       }
 
-      /* Program section */
+
 
       section.program {
         padding-top: 60px;
       }
 
-      /* Timeline */
+
 
       .timeline {
         max-width: 100%;
@@ -1068,7 +1039,7 @@
         font-size: 14px;
       }
 
-      /* Hosts */
+
 
       .hosts-label {
         font-size: 22px;
@@ -1078,7 +1049,7 @@
         font-size: 37px;
       }
 
-      /* Countdown */
+
 
       .count {
         gap: 15px;
@@ -1092,7 +1063,7 @@
         font-size: 8px;
       }
 
-      /* Address */
+
 
       .address-section {
         min-height: 650px;
@@ -1193,9 +1164,7 @@
       }
     }
 
-    /* =========================
-       ENVELOPE SCREEN
-    ========================== */
+
 
     .envelope-screen {
       position: fixed;
@@ -1451,9 +1420,7 @@
       }
     }
 
-    /* =========================
-       TOP CONTROLS (music + lang)
-    ========================== */
+
 
     .top-controls {
       position: fixed;
@@ -1543,14 +1510,7 @@
       }
     }
 
-    /* =========================
-       PERFORMANCE: LOW-END / OLDER DEVICES
-       backdrop-filter (blur) is one of the most GPU-expensive
-       CSS effects and is a common cause of jank/lag on older
-       phones. We keep it on capable devices but drop it where
-       hardware acceleration for it isn't supported, and always
-       respect the user's reduced-motion preference.
-    ========================== */
+
 
     @media (prefers-reduced-motion: reduce) {
       html {
@@ -1593,10 +1553,6 @@
 
 <body>
 
-<!-- =========================
-     ENVELOPE INTRO SCREEN
-========================== -->
-
 <div class="envelope-screen" id="envelopeScreen">
 
   <div class="envelope-screen-bg">
@@ -1636,10 +1592,6 @@
 
 </div>
 
-<!-- =========================
-     TOP CONTROLS
-========================== -->
-
 <div class="top-controls" id="topControls">
 
   <button
@@ -1663,21 +1615,11 @@
 
 </div>
 
-<!--
-  ВАЖНО про музыку:
-  Если вы заменили файл assets/music.mp3 на новый, но сайт всё ещё
-  играет старую песню — это кэш браузера/GitHub Pages, а не баг сайта.
-  У нового файла тот же URL, поэтому браузер думает, что это старый файл.
-  Решение: при каждой замене музыки увеличивайте число в ?v=1 ниже
-  (например ?v=2, потом ?v=3...). Это заставит браузер скачать файл заново.
--->
 <audio id="bgMusic" src="assets/music.mp3?v=1" loop preload="none"></audio>
 
 <main class="page">
 
-  <!-- =========================
-       HERO
-  ========================== -->
+
 
   <section class="hero">
 
@@ -1722,10 +1664,7 @@
 
   </section>
 
-  <!-- =========================
-       INVITATION
-       RINGS BACKGROUND
-  ========================== -->
+
 
   <section class="invitation">
 
@@ -1764,10 +1703,7 @@
 
   </section>
 
-  <!-- =========================
-       CALENDAR
-       WEDDING PHOTO BACKGROUND
-  ========================== -->
+
 
   <section class="calendar-section">
 
@@ -1859,9 +1795,7 @@
 
   </section>
 
-  <!-- =========================
-       EVENING PROGRAM
-  ========================== -->
+
 
   <section class="program">
 
@@ -1913,9 +1847,7 @@
 
   </section>
 
-  <!-- =========================
-       COUNTDOWN
-  ========================== -->
+
 
   <section class="rsvp">
 
@@ -1960,10 +1892,7 @@
 
   </section>
 
-  <!-- =========================
-       ADDRESS
-       ASL.JPEG BACKGROUND
-  ========================== -->
+
 
   <section class="address-section">
 
@@ -2013,9 +1942,7 @@
 
   </section>
 
-  <!-- =========================
-       FOOTER
-  ========================== -->
+
 
   <footer data-i18n="footer_text">
     САНЖАР &amp; КАМИЛА · 25 ҚЫРКҮЙЕК 2026
@@ -2024,19 +1951,13 @@
 </main>
 
 <script>
-  // Whether the guest has opened the envelope yet. Declared here at the
-  // top (rather than only where openEnvelope is defined) so every
-  // function that checks it — including applyLang, called from a
-  // click handler set up earlier in the script — sees a real value.
+
+
+
+
   let opened = false;
 
-  /* =========================
-     PERFORMANCE: PAUSE OFF-SCREEN ANIMATIONS
-     The heart/pulse/bounce animations use `infinite`, which keeps
-     the CPU/GPU busy even for sections the guest hasn't scrolled
-     to yet. On older phones this is a common cause of scroll jank.
-     We pause them while off-screen and resume when they appear.
-  ========================== */
+
 
   if ("IntersectionObserver" in window) {
     const animatedSelectors = ".flourish-heart, .scroll, .envelope-seal, .envelope-hint-arrow";
@@ -2057,12 +1978,7 @@
     });
   }
 
-  /*
-   * Той:
-   * 25 сентября 2026
-   * 18:00
-   * UTC+5
-   */
+
 
   const target = new Date("2026-09-25T18:00:00+05:00").getTime();
 
@@ -2089,9 +2005,7 @@
   tick();
   setInterval(tick, 1000);
 
-  /* =========================
-     I18N (KK / RU)
-  ========================== */
+
 
   const translations = {
     kk: {
@@ -2180,9 +2094,9 @@
       langBtn.textContent = lang === "kk" ? "RU" : "KZ";
     }
 
-    // Only keep animating the "open envelope" hint while the
-    // envelope screen is still showing — once opened, this text
-    // is hidden forever, so restarting it would just waste CPU.
+
+
+
     if (!opened) {
       restartTypewriter(dict.env_hint);
     }
@@ -2192,9 +2106,7 @@
     applyLang(currentLang === "kk" ? "ru" : "kk");
   });
 
-  /* =========================
-     ENVELOPE HINT TYPEWRITER
-  ========================== */
+
 
   const hintTextEl = document.getElementById("envelopeHintText");
   let typewriterTimer = null;
@@ -2243,9 +2155,7 @@
     runTypewriter(text);
   }
 
-  /* =========================
-     ENVELOPE INTRO
-  ========================== */
+
 
   const envelopeScreen = document.getElementById("envelopeScreen");
   const envelope = document.getElementById("envelope");
@@ -2261,10 +2171,10 @@
 
     envelope.classList.add("is-open");
 
-    // Try to start music right on the user gesture (required by browsers)
+
     bgMusic.volume = 0.55;
     bgMusic.play().catch(() => {
-      // Autoplay might still be blocked; user can use the music button.
+
       musicBtn.classList.add("is-muted");
     });
 
@@ -2277,27 +2187,27 @@
       topControls.classList.add("is-visible");
       document.body.style.overflow = "";
 
-      // Gently glide all the way down to the footer, giving
-      // guests time to actually read each section as it passes.
-      // Starts 2 seconds after the envelope fully opens.
+
+
+
       setTimeout(() => {
-        // Re-measure right before scrolling: images may have
-        // finished loading by now and changed the page height.
+
+
         const targetY = document.body.scrollHeight - window.innerHeight;
         const distance = targetY - window.scrollY;
 
-        // Bail out if there's effectively nothing to scroll (e.g. on
-        // a very tall/short viewport) so we don't run a pointless timer.
+
+
         if (distance < 40) return;
 
-        // ~70px per second — unhurried but not sluggish, comfortable for reading
+
         const duration = Math.max(6000, Math.min(26000, distance * 14));
         smoothScrollTo(targetY, duration);
       }, 2000);
     }, 550 + 900);
   }
 
-  // Custom very slow, gently-eased scroll animation
+
   let autoScrollActive = false;
 
   function smoothScrollTo(targetY, duration) {
@@ -2306,7 +2216,7 @@
     const startTime = performance.now();
     autoScrollActive = true;
 
-    // Soft sine ease — gentle start and finish, steady in between
+
     function easeInOutSine(t) {
       return -(Math.cos(Math.PI * t) - 1) / 2;
     }
@@ -2330,7 +2240,7 @@
     requestAnimationFrame(step);
   }
 
-  // If the guest wants to scroll themselves, hand control back to them
+
   ["wheel", "touchstart", "keydown"].forEach((evt) => {
     window.addEventListener(
       evt,
@@ -2349,7 +2259,7 @@
     }
   });
 
-  // Prevent scrolling the page behind the envelope
+
   document.body.style.overflow = "hidden";
 
   musicBtn.addEventListener("click", () => {
@@ -2370,7 +2280,7 @@
     musicBtn.classList.remove("is-muted");
   });
 
-  // Start the hint typewriter animation with the default language text
+
   runTypewriter(translations.kk.env_hint);
 </script>
 
