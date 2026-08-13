@@ -374,21 +374,23 @@
 
       padding: 42px 35px;
 
-      background: rgba(255, 253, 249, .67);
+      background: rgba(255, 253, 249, .88);
 
-      border: 1px solid rgba(255, 255, 255, .7);
+      border: 1px solid rgba(255, 255, 255, .8);
 
-      backdrop-filter: blur(3px);
-      -webkit-backdrop-filter: blur(3px);
+      backdrop-filter: blur(2px);
+      -webkit-backdrop-filter: blur(2px);
 
       box-shadow:
-        0 18px 50px rgba(40, 34, 27, .08);
+        0 18px 50px rgba(40, 34, 27, .1);
 
       animation: reveal 1s ease both;
     }
 
     .invitation .lead {
-      color: #514c45;
+      color: #3c3833;
+      font-size: 19px;
+      font-weight: 500;
     }
 
     /* =========================
@@ -1511,6 +1513,51 @@
         right: 12px;
       }
     }
+
+    /* =========================
+       PERFORMANCE: LOW-END / OLDER DEVICES
+       backdrop-filter (blur) is one of the most GPU-expensive
+       CSS effects and is a common cause of jank/lag on older
+       phones. We keep it on capable devices but drop it where
+       hardware acceleration for it isn't supported, and always
+       respect the user's reduced-motion preference.
+    ========================== */
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      .flourish-heart,
+      .scroll,
+      .envelope-seal,
+      .envelope-hint-arrow {
+        animation: none !important;
+      }
+
+      .hero-content,
+      .invitation-content,
+      .calendar-wrap,
+      .address-content {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+      }
+    }
+
+    @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+      .hero-content,
+      .invitation-content,
+      .envelope-screen-overlay,
+      .music-btn,
+      .lang-btn {
+        background: var(--paper);
+      }
+
+      .invitation-content {
+        background: var(--white);
+      }
+    }
   </style>
 
 </head>
@@ -1524,7 +1571,7 @@
 <div class="envelope-screen" id="envelopeScreen">
 
   <div class="envelope-screen-bg">
-    <img src="assets/couple.jpeg" alt="Санжар мен Камила">
+    <img src="assets/couple.jpeg" alt="Санжар мен Камила" fetchpriority="high" decoding="async">
   </div>
 
   <div class="envelope-screen-overlay"></div>
@@ -1587,7 +1634,15 @@
 
 </div>
 
-<audio id="bgMusic" src="assets/music.mp3" loop preload="none"></audio>
+<!--
+  ВАЖНО про музыку:
+  Если вы заменили файл assets/music.mp3 на новый, но сайт всё ещё
+  играет старую песню — это кэш браузера/GitHub Pages, а не баг сайта.
+  У нового файла тот же URL, поэтому браузер думает, что это старый файл.
+  Решение: при каждой замене музыки увеличивайте число в ?v=1 ниже
+  (например ?v=2, потом ?v=3...). Это заставит браузер скачать файл заново.
+-->
+<audio id="bgMusic" src="assets/music.mp3?v=1" loop preload="none"></audio>
 
 <main class="page">
 
@@ -1601,6 +1656,8 @@
       <img
         src="assets/rings.jpeg"
         alt="Романтикалық үйлену тойының көрінісі"
+        fetchpriority="high"
+        decoding="async"
       >
     </div>
 
@@ -1648,6 +1705,7 @@
         src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1600&q=88"
         alt="Үйлену тойы"
         loading="lazy"
+        decoding="async"
       >
     </div>
 
@@ -1694,6 +1752,8 @@
           src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=900&q=88"
           alt=""
           aria-hidden="true"
+          loading="lazy"
+          decoding="async"
         >
       </div>
 
@@ -1883,6 +1943,7 @@
         src="assets/asl.jpeg"
         alt="«Асылай» мейрамханасы"
         loading="lazy"
+        decoding="async"
       >
     </div>
 
@@ -1934,6 +1995,39 @@
 </main>
 
 <script>
+  // Whether the guest has opened the envelope yet. Declared here at the
+  // top (rather than only where openEnvelope is defined) so every
+  // function that checks it — including applyLang, called from a
+  // click handler set up earlier in the script — sees a real value.
+  let opened = false;
+
+  /* =========================
+     PERFORMANCE: PAUSE OFF-SCREEN ANIMATIONS
+     The heart/pulse/bounce animations use `infinite`, which keeps
+     the CPU/GPU busy even for sections the guest hasn't scrolled
+     to yet. On older phones this is a common cause of scroll jank.
+     We pause them while off-screen and resume when they appear.
+  ========================== */
+
+  if ("IntersectionObserver" in window) {
+    const animatedSelectors = ".flourish-heart, .scroll, .envelope-seal, .envelope-hint-arrow";
+
+    const animObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          entry.target.style.animationPlayState = entry.isIntersecting ? "running" : "paused";
+        });
+      },
+      { rootMargin: "80px" }
+    );
+
+    document.addEventListener("DOMContentLoaded", () => {
+      document.querySelectorAll(animatedSelectors).forEach((el) => {
+        animObserver.observe(el);
+      });
+    });
+  }
+
   /*
    * Той:
    * 25 сентября 2026
@@ -2055,7 +2149,12 @@
       langBtn.textContent = lang === "kk" ? "RU" : "KZ";
     }
 
-    restartTypewriter(dict.env_hint);
+    // Only keep animating the "open envelope" hint while the
+    // envelope screen is still showing — once opened, this text
+    // is hidden forever, so restarting it would just waste CPU.
+    if (!opened) {
+      restartTypewriter(dict.env_hint);
+    }
   }
 
   document.getElementById("langBtn").addEventListener("click", () => {
@@ -2123,8 +2222,6 @@
   const bgMusic = document.getElementById("bgMusic");
   const musicBtn = document.getElementById("musicBtn");
 
-  let opened = false;
-
   function openEnvelope() {
     if (opened) return;
     opened = true;
@@ -2149,14 +2246,23 @@
       topControls.classList.add("is-visible");
       document.body.style.overflow = "";
 
-      // Very slowly glide all the way down to the footer, giving
-      // guests time to actually read each section as it passes
+      // Gently glide all the way down to the footer, giving
+      // guests time to actually read each section as it passes.
+      // Starts 2 seconds after the envelope fully opens.
       setTimeout(() => {
-        const distance = document.body.scrollHeight - window.scrollY;
-        // ~35px per second — very slow, unhurried pace for reading
-        const duration = Math.max(35000, distance * 28);
-        smoothScrollTo(document.body.scrollHeight, duration);
-      }, 400);
+        // Re-measure right before scrolling: images may have
+        // finished loading by now and changed the page height.
+        const targetY = document.body.scrollHeight - window.innerHeight;
+        const distance = targetY - window.scrollY;
+
+        // Bail out if there's effectively nothing to scroll (e.g. on
+        // a very tall/short viewport) so we don't run a pointless timer.
+        if (distance < 40) return;
+
+        // ~70px per second — unhurried but not sluggish, comfortable for reading
+        const duration = Math.max(6000, Math.min(26000, distance * 14));
+        smoothScrollTo(targetY, duration);
+      }, 2000);
     }, 550 + 900);
   }
 
