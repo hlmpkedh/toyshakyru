@@ -120,6 +120,16 @@
       font-size: 18px;
     }
 
+    /* Invitation title is longer than other h2s on the page
+       (a full list of relations/guests), so it gets its own,
+       slightly smaller, more measured sizing to stay balanced
+       inside the card on both desktop and mobile. */
+    .invite-title {
+      font-size: clamp(30px, 6.4vw, 42px);
+      line-height: 1.22;
+      letter-spacing: .002em;
+    }
+
     .flourish {
       display: flex;
       align-items: center;
@@ -1720,9 +1730,10 @@
         <span class="flourish-heart">♡</span>
       </div>
 
-      <h2 data-i18n="invite_title">
-        Ардақты ағайын,<br>
-        құрметті қонақтар!
+      <h2 class="invite-title" data-i18n="invite_title">
+        Құрметті ағайын-туыс, бауырлар,<br>
+        құда-жекжат, нағашы-жиен, бөлелер,<br>
+        әріптестер, дос-жарандар мен көршілер!
       </h2>
 
       <p class="lead" data-i18n="invite_lead">
@@ -2075,7 +2086,7 @@
       hero_date: "25 · ҚЫРКҮЙЕК · 2026",
       hero_place: "АРЫС ҚАЛАСЫ · «АСЫЛАЙ» МЕЙРАМХАНАСЫ · ӘУЕЗОВ КӨШЕСІ, 22",
       hero_scroll: "ТӨМЕН ЖЫЛЖЫТЫҢЫЗ  ·  ↓",
-      invite_title: "Ардақты ағайын,<br>құрметті қонақтар!",
+      invite_title: "Құрметті ағайын-туыс, бауырлар,<br>құда-жекжат, нағашы-жиен, бөлелер,<br>әріптестер, дос-жарандар мен көршілер!",
       invite_lead: "Сіздерді өміріміздегі ең қуанышты күндердің бірі — шаңырақ көтеру тойымызға шын жүректен шақырамыз. Ақ тілектеріңіз бен ақ ниеттеріңіз біз үшін ең үлкен сый.",
       cal_month: "Қыркүйек",
       program_eyebrow: "Біздің қуанышымыз",
