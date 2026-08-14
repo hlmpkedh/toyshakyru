@@ -231,7 +231,7 @@
 
     .hero {
       min-height: 100vh;
-      min-height: 100dvh;
+      min-height: 100svh;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -263,14 +263,26 @@
       position: absolute;
       inset: 0;
       z-index: 0;
+      transform: translateZ(0);
+      -webkit-transform: translateZ(0);
+      will-change: transform;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      contain: strict;
     }
 
     .hero-bg img {
+      position: absolute;
+      inset: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
       object-position: center 42%;
       filter: saturate(.72) sepia(.08);
+      transform: translateZ(0);
+      -webkit-transform: translateZ(0);
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
     }
 
     .hero-overlay {
@@ -933,7 +945,6 @@
       .hero {
         min-height: 100vh;
         min-height: 100svh;
-        min-height: 100dvh;
         padding: 40px 18px;
       }
 
@@ -1364,6 +1375,99 @@
       }
     }
 
+    .butterflies {
+      position: fixed;
+      inset: 0;
+      z-index: 1200;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .butterfly {
+      position: absolute;
+      bottom: 30%;
+      left: 50%;
+      width: 26px;
+      height: 22px;
+      opacity: 0;
+      animation:
+        butterflyRise var(--bfly-duration, 3.6s) ease-out forwards,
+        butterflyDrift var(--bfly-duration, 3.6s) ease-in-out forwards,
+        wingFlap .22s ease-in-out infinite;
+      animation-delay: var(--bfly-delay, 0s), var(--bfly-delay, 0s), var(--bfly-delay, 0s);
+    }
+
+    .butterfly svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+      filter: drop-shadow(0 2px 4px rgba(40, 34, 27, .18));
+    }
+
+    .butterfly .wing {
+      transform-box: fill-box;
+      transform-origin: center;
+    }
+
+    .butterfly .wing-l {
+      animation: wingFlapL .22s ease-in-out infinite;
+    }
+
+    .butterfly .wing-r {
+      animation: wingFlapR .22s ease-in-out infinite;
+    }
+
+    @keyframes wingFlapL {
+      0%, 100% { transform: scaleX(1); }
+      50% { transform: scaleX(.55); }
+    }
+
+    @keyframes wingFlapR {
+      0%, 100% { transform: scaleX(1); }
+      50% { transform: scaleX(.55); }
+    }
+
+    @keyframes butterflyRise {
+      0% {
+        opacity: 0;
+        bottom: 28%;
+      }
+      8% {
+        opacity: 1;
+      }
+      82% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+        bottom: 108%;
+      }
+    }
+
+    @keyframes butterflyDrift {
+      0% {
+        transform: translateX(calc(var(--bfly-x, 0px) * 0)) rotate(-6deg);
+      }
+      25% {
+        transform: translateX(calc(var(--bfly-x, 0px) * .3)) rotate(8deg);
+      }
+      50% {
+        transform: translateX(calc(var(--bfly-x, 0px) * .55)) rotate(-8deg);
+      }
+      75% {
+        transform: translateX(calc(var(--bfly-x, 0px) * .8)) rotate(6deg);
+      }
+      100% {
+        transform: translateX(var(--bfly-x, 0px)) rotate(-4deg);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .butterflies {
+        display: none;
+      }
+    }
+
     .envelope-hint {
       position: relative;
       z-index: 2;
@@ -1573,6 +1677,8 @@
   </div>
 
 </div>
+
+<div class="butterflies" id="butterflies" aria-hidden="true"></div>
 
 <div class="top-controls" id="topControls">
 
@@ -2155,6 +2261,47 @@
   const bgMusic = document.getElementById("bgMusic");
   const musicBtn = document.getElementById("musicBtn");
 
+  const BUTTERFLY_SVG = `
+    <svg viewBox="0 0 26 22" xmlns="http://www.w3.org/2000/svg">
+      <g class="wing wing-l">
+        <path d="M13 11 C 8 2, 0 0, 1 7 C 1.5 12, 8 13, 13 11 Z" fill="#c98fae" opacity=".92"/>
+      </g>
+      <g class="wing wing-r">
+        <path d="M13 11 C 18 2, 26 0, 25 7 C 24.5 12, 18 13, 13 11 Z" fill="#a07c54" opacity=".92"/>
+      </g>
+      <ellipse cx="13" cy="11" rx="1" ry="5.5" fill="#3c3833"/>
+    </svg>
+  `;
+
+  function spawnButterflies() {
+    const container = document.getElementById("butterflies");
+    if (!container) return;
+
+    const count = window.innerWidth < 520 ? 8 : 12;
+
+    for (let i = 0; i < count; i++) {
+      const b = document.createElement("div");
+      b.className = "butterfly";
+      b.innerHTML = BUTTERFLY_SVG;
+
+      const startX = (Math.random() - 0.5) * (window.innerWidth * 0.7);
+      const driftX = (Math.random() - 0.5) * (window.innerWidth * 0.6);
+      const duration = 3 + Math.random() * 2.2;
+      const delay = Math.random() * 0.9;
+      const scale = 0.7 + Math.random() * 0.8;
+
+      b.style.setProperty("--bfly-x", driftX + "px");
+      b.style.setProperty("--bfly-duration", duration + "s");
+      b.style.setProperty("--bfly-delay", delay + "s");
+      b.style.left = `calc(50% + ${startX}px)`;
+      b.style.transform = `scale(${scale})`;
+
+      container.appendChild(b);
+
+      setTimeout(() => b.remove(), (duration + delay) * 1000 + 200);
+    }
+  }
+
   function openEnvelope() {
     if (opened) return;
     opened = true;
@@ -2162,6 +2309,7 @@
     if (typewriterTimer) clearTimeout(typewriterTimer);
 
     envelope.classList.add("is-open");
+    spawnButterflies();
 
 
     bgMusic.volume = 0.55;
