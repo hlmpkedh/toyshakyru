@@ -231,7 +231,8 @@
 
     .hero {
       min-height: 100vh;
-      min-height: 100svh;
+      min-height: calc(var(--vh, 1vh) * 100);
+      min-height: 100lvh;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -944,7 +945,8 @@
 
       .hero {
         min-height: 100vh;
-        min-height: 100svh;
+        min-height: calc(var(--vh, 1vh) * 100);
+        min-height: 100lvh;
         padding: 40px 18px;
       }
 
@@ -2102,6 +2104,49 @@
 
   tick();
   setInterval(tick, 1000);
+
+
+
+  // Стабилизация высоты .hero: фиксируем реальную высоту вьюпорта один раз,
+  // чтобы картинка rings.jpg не пересчитывала масштаб (не "приближалась")
+  // при каждом свайпе вверх/вниз из-за live-изменения адресной строки браузера.
+  (function stabilizeHeroHeight() {
+    let resizeTimer = null;
+    let lastWidth = window.innerWidth;
+
+    function setVh() {
+      const vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty("--vh", vh + "px");
+    }
+
+    setVh();
+
+    // Мобильные браузеры стреляют "resize" и при скрытии/показе адресной
+    // строки во время скролла — это НЕ настоящий ресайз. Реагируем только
+    // если реально изменилась ширина окна (поворот экрана, смена окна).
+    window.addEventListener(
+      "resize",
+      () => {
+        if (window.innerWidth === lastWidth) return;
+        lastWidth = window.innerWidth;
+
+        if (resizeTimer) clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(setVh, 200);
+      },
+      { passive: true }
+    );
+
+    window.addEventListener(
+      "orientationchange",
+      () => {
+        setTimeout(() => {
+          lastWidth = window.innerWidth;
+          setVh();
+        }, 250);
+      },
+      { passive: true }
+    );
+  })();
 
 
 
